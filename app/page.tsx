@@ -2,10 +2,11 @@ import Link from "next/link";
 import { AgentStoryCarousel } from "@/components/home/AgentStoryCarousel";
 import { LatestResearch } from "@/components/home/LatestResearch";
 import { Workstreams } from "@/components/home/Workstreams";
-import { OpenQuestions } from "@/components/home/OpenQuestions";
 import { JoinCommunity } from "@/components/home/JoinCommunity";
 import { PocViewSwitcher } from "@/components/poc/PocViewSwitcher";
+import { DemoVideo } from "@/components/demo/DemoVideo";
 import { siteConfig } from "@/lib/site";
+import { demoIntroParagraphs, walkthroughCaption } from "@/lib/content";
 import { homeContent, homeWide } from "@/lib/layout";
 
 const heroNoiseStyle = {
@@ -13,6 +14,7 @@ const heroNoiseStyle = {
 } as const;
 
 const PRIMARY_STEWARD = siteConfig.stewards[0];
+const PRIMARY_VIDEO = siteConfig.demo.videos[0];
 
 export default function HomePage() {
   return (
@@ -28,82 +30,92 @@ export default function HomePage() {
         <div
           className={`${homeContent} flex flex-col items-center py-14 text-center sm:py-20`}
         >
-          <p className="text-[11px] font-bold uppercase tracking-[0.22em] text-zinc-400">
-            {siteConfig.eyebrow}
-          </p>
-          <h1 className="mt-4 text-4xl font-normal tracking-tight text-white sm:text-5xl md:text-6xl">
+          <h1 className="text-4xl font-normal tracking-tight text-white sm:text-5xl md:text-6xl">
             {siteConfig.title}
           </h1>
           <p className="mt-5 max-w-2xl text-base leading-relaxed text-zinc-400 sm:text-lg">
-            {siteConfig.tagline}
+            {siteConfig.mission}
           </p>
           <div className="mt-9 flex flex-col items-center gap-3 sm:flex-row sm:gap-4">
-            <Link
-              href="/memo"
-              className="inline-flex rounded-full bg-zinc-100 px-7 py-3 text-sm font-semibold text-zinc-950 transition-colors hover:bg-white"
-            >
-              Read the policy memo
-            </Link>
-            <Link
-              href="/join"
-              className="inline-flex rounded-full border border-white/20 px-7 py-3 text-sm font-semibold text-white transition-colors hover:border-white/40 hover:bg-white/[0.06]"
-            >
-              Join the community
-            </Link>
-            <a
-              href={siteConfig.githubUrl}
-              target="_blank"
-              rel="noreferrer"
-              className="inline-flex items-center gap-1 text-sm font-medium text-zinc-300 underline-offset-4 transition-colors hover:text-white hover:underline"
-            >
-              View on GitHub
-              <span aria-hidden>→</span>
-            </a>
+            {siteConfig.hero.ctas.map((cta, i) => (
+              <Link
+                key={cta.id}
+                href={cta.href}
+                className={
+                  i === 0
+                    ? "inline-flex rounded-full bg-zinc-100 px-7 py-3 text-sm font-semibold text-zinc-950 transition-colors hover:bg-white"
+                    : "inline-flex rounded-full border border-white/20 px-7 py-3 text-sm font-semibold text-white transition-colors hover:border-white/40 hover:bg-white/[0.06]"
+                }
+              >
+                {cta.label}
+              </Link>
+            ))}
           </div>
 
           {/* Initiative line — quiet, sets institutional framing. */}
-          <p className="mt-9 text-xs text-zinc-500">
-            An initiative by{" "}
-            <a
-              href={PRIMARY_STEWARD.href}
-              target="_blank"
-              rel="noreferrer"
-              className="font-medium text-zinc-300 underline-offset-4 hover:text-white hover:underline"
-            >
-              {PRIMARY_STEWARD.name}
-            </a>
-          </p>
+          {PRIMARY_STEWARD && (
+            <p className="mt-9 text-xs text-zinc-500">
+              An initiative by{" "}
+              <a
+                href={PRIMARY_STEWARD.href}
+                target="_blank"
+                rel="noreferrer"
+                className="font-medium text-zinc-300 underline-offset-4 hover:text-white hover:underline"
+              >
+                {PRIMARY_STEWARD.name}
+              </a>
+            </p>
+          )}
         </div>
       </section>
 
       {/* ── Three-card story: arrival, verification, decision ──────── */}
       <AgentStoryCarousel />
 
-      {/* ── Workstreams: what's shipping in public ─────────────────── */}
+      {/* ── Workstreams: what we're working on ─────────────────────── */}
       <Workstreams />
 
-      {/* ── Recently published research outputs ────────────────────── */}
+      {/* ── Research outputs ───────────────────────────────────────── */}
       <LatestResearch />
 
-      {/* ── Interactive PoC ────────────────────────────────────────── */}
+      {/* ── Technical Demo preview ─────────────────────────────────── */}
       <section className="border-b border-slate-200/80 bg-slate-50/50">
         <div className={`${homeWide} pb-12 pt-12 sm:pb-16 sm:pt-14`}>
-          <p className="text-[11px] font-bold uppercase tracking-[0.18em] text-[#6B6B6B]">
-            Proof of concept
-          </p>
-          <h2 className="mt-2 text-3xl font-semibold tracking-tight text-[#1a2744] sm:text-4xl">
-            See it working
+          <h2 className="text-3xl font-semibold tracking-tight text-[#1a2744] sm:text-4xl">
+            Technical Demo
           </h2>
           <div
             className="mt-3 h-px max-w-md bg-gradient-to-r from-[#ea580c] via-[#ea580c]/50 to-transparent"
             aria-hidden
           />
-          <PocViewSwitcher className="mt-8" />
+
+          <div className="mt-8 grid gap-10 lg:grid-cols-[minmax(0,1.1fr)_minmax(0,1fr)] lg:items-start">
+            <div className="flex flex-col gap-4 text-base leading-relaxed text-slate-700">
+              {demoIntroParagraphs.map((para) => (
+                <p key={para}>{para}</p>
+              ))}
+
+              <p className="mt-2 text-base font-medium text-[#1a2744]">
+                We&apos;re building in public — explore the demo yourself!{" "}
+                <Link
+                  href="/demo"
+                  className="underline decoration-[#ea580c] decoration-2 underline-offset-4 hover:text-[#0f4c5c]"
+                >
+                  Technical Demo
+                </Link>
+              </p>
+            </div>
+
+            <DemoVideo
+              video={PRIMARY_VIDEO}
+              hideTitle
+              caption={walkthroughCaption}
+            />
+          </div>
+
+          <PocViewSwitcher className="mt-12" />
         </div>
       </section>
-
-      {/* ── Open questions: where we'd love your input ─────────────── */}
-      <OpenQuestions />
 
       {/* ── Join the community ─────────────────────────────────────── */}
       <JoinCommunity />

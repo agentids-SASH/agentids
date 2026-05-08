@@ -1,14 +1,19 @@
 import { siteConfig } from "@/lib/site";
+import { aboutIntroParagraph } from "@/lib/content";
 
 /**
  * ProjectIntro
  * ────────────
  * Top section of the /about page. Server component — no client APIs needed.
- * The copy intentionally pulls from `siteConfig` so it stays in lockstep
- * with the rest of the site (homepage hero, metadata).
  *
- * The "View source on GitHub" link is the open-source signal: kept small
- * and inline so it reads as collaborative framing, not a marketing CTA.
+ * The H1 is the project's mission line (sourced from `siteConfig.mission`)
+ * so the About header repeats the homepage hero's framing. The body
+ * paragraph comes from `lib/content` so copy edits stay out of JSX.
+ *
+ * Per the SASH spec there is no "About this project" eyebrow and no
+ * "View source on GitHub" link — both have been removed. Concordia is
+ * intentionally absent from the byline; flip
+ * `siteConfig.featureFlags.includeConcordia` to surface it.
  */
 export function ProjectIntro() {
   return (
@@ -18,34 +23,15 @@ export function ProjectIntro() {
       style={{ padding: "clamp(56px, 10vw, 96px) clamp(16px, 5vw, 48px)" }}
     >
       <div className="mx-auto flex max-w-3xl flex-col gap-6">
-        <p className="text-[11px] font-bold uppercase tracking-[0.18em] text-[#6B6B6B]">
-          About this project
-        </p>
         <h1
           id="about-project-heading"
           className="text-3xl font-semibold leading-tight tracking-tight text-[#1A2744] sm:text-4xl"
         >
-          {siteConfig.tagline}
+          {siteConfig.mission}
         </h1>
         <div className="flex flex-col gap-4 text-base leading-relaxed text-[#1A1A1A] sm:text-lg">
-          <p>
-            We treat agent IDs as a set of identifiers and metadata that AI
-            agents should include in their interactions with other entities.
-            We have concluded a first policy memo on the topic, which maps
-            the landscape and outlines design options.
-          </p>
+          <p>{aboutIntroParagraph}</p>
         </div>
-        <p className="text-sm text-[#6B6B6B]">
-          <a
-            href={siteConfig.githubUrl}
-            target="_blank"
-            rel="noreferrer"
-            className="underline decoration-[#1A2744]/40 underline-offset-4 transition-colors hover:text-[#1A2744] hover:decoration-[#1A2744]"
-          >
-            View source on GitHub
-          </a>
-          <span aria-hidden> →</span>
-        </p>
       </div>
     </section>
   );

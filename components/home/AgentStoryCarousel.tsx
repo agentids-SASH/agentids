@@ -3,22 +3,26 @@
 import Image from "next/image";
 import {
   useCallback,
-  useEffect,
   useId,
-  useRef,
   useState,
   useSyncExternalStore,
   type CSSProperties,
   type KeyboardEvent,
 } from "react";
 import { withPublicBasePath } from "@/lib/paths";
+import { carouselProblemParagraph } from "@/lib/content";
 
 /**
  * AgentStoryCarousel
  * ──────────────────
- * Two-column layout (md+): left = problem copy + per-slide caption that
- * fades when the step changes; right = image carousel with prev/next
- * flanking the frame and numbered tabs below. Stacks on small screens.
+ * Two-column layout (md+): left = static "Why agent IDs?" copy; right =
+ * image carousel with prev/next flanking the frame and numbered tabs
+ * below. Stacks on small screens.
+ *
+ * Per the SASH spec the eyebrow ("The problem") and the per-slide
+ * caption that previously fade-swapped on the left have been removed —
+ * the left column now reads as a single static paragraph alongside the
+ * larger visual on the right.
  */
 
 const PALETTE = {
@@ -32,33 +36,34 @@ const PALETTE = {
   slate800: "#1F2937",
 } as const;
 
-const CAPTION_FADE_MS = 240;
-
 type Slide = {
   src: string;
   alt: string;
-  caption: string;
 };
 
-/** Slide content; captions render in the left column for the active step. */
+/**
+ * Slide content. Alt text reflects the spec's three "bank questions":
+ *   1. Who is this agent and who controls it?
+ *   2. Does the agent have all necessary authorization?
+ *   3. If something goes wrong, can I request that the agent be shut down?
+ *
+ * Slide-1 image: per the spec the agent should not visibly hold an ID
+ * card. The image at `/images/home/carousel-1.jpg` is a one-file swap
+ * when the new artwork lands; alt text is already updated to match the
+ * intended composition.
+ */
 const SLIDES: readonly Slide[] = [
   {
     src: "/images/home/carousel-1.jpg",
-    alt: "An agent arrives at a bank API service; the bank is unsure whether the agent is trustworthy.",
-    caption:
-      "An agent arrives at a service: a bank API. The bank API isn't sure whether the Agent is trustworthy.",
+    alt: "An AI agent arrives at a bank API. The bank wonders: who is this agent and who controls it? Does it have all necessary authorization? If something goes wrong, can the agent be shut down?",
   },
   {
     src: "/images/home/carousel-2.jpg",
-    alt: "The Agent presents its Agent ID to the bank API; the service's questions are answered.",
-    caption:
-      "The Agent presents its ID, answering the Bank API's questions",
+    alt: "The agent presents its Agent ID to the bank API, answering the bank's questions about identity, control, authorization, and shutdown.",
   },
   {
     src: "/images/home/carousel-3.jpg",
-    alt: "Agents with IDs are allowed through; agents without IDs are denied access.",
-    caption:
-      "Agents with IDs are allowed access to services while Agents without are denied access",
+    alt: "Agents with IDs are allowed access to services; agents without IDs are denied access.",
   },
 ];
 
@@ -86,60 +91,9 @@ function getPrefersReducedMotionServer(): boolean {
   return false;
 }
 
-/**
- * Drives caption text + opacity so copy cross-fades when `activeIndex` changes.
- * Skips animation on first paint and when prefers-reduced-motion is set.
- */
-function useCaptionFade(activeIndex: number, reducedMotion: boolean) {
-  const [captionIndex, setCaptionIndex] = useState(activeIndex);
-  const [opacity, setOpacity] = useState(1);
-  const isFirstPaint = useRef(true);
-
-  useEffect(() => {
-    if (reducedMotion) {
-      setCaptionIndex(activeIndex);
-      setOpacity(1);
-      return;
-    }
-
-    if (isFirstPaint.current) {
-      isFirstPaint.current = false;
-      setCaptionIndex(activeIndex);
-      setOpacity(1);
-      return;
-    }
-
-    if (captionIndex === activeIndex) {
-      setOpacity(1);
-      return;
-    }
-
-    let cancelled = false;
-    setOpacity(0);
-    const id = window.setTimeout(() => {
-      if (cancelled) return;
-      setCaptionIndex(activeIndex);
-      requestAnimationFrame(() => {
-        if (!cancelled) setOpacity(1);
-      });
-    }, CAPTION_FADE_MS);
-
-    return () => {
-      cancelled = true;
-      window.clearTimeout(id);
-    };
-  }, [activeIndex, reducedMotion, captionIndex]);
-
-  return { captionIndex, opacity };
-}
-
 export function AgentStoryCarousel() {
   const [activeIndex, setActiveIndex] = useState(0);
   const reduced = useReducedMotion();
-  const { captionIndex, opacity: captionOpacity } = useCaptionFade(
-    activeIndex,
-    reduced,
-  );
   const sectionId = useId();
   const slideIdPrefix = `${sectionId}-slide`;
 
@@ -175,10 +129,6 @@ export function AgentStoryCarousel() {
       : "transform 400ms cubic-bezier(0.4, 0, 0.2, 1)",
   };
 
-  const captionTransition = reduced
-    ? "none"
-    : `opacity ${CAPTION_FADE_MS}ms ease, transform ${CAPTION_FADE_MS}ms ease`;
-
   return (
     <section
       tabIndex={0}
@@ -194,8 +144,8 @@ export function AgentStoryCarousel() {
         padding: "clamp(40px, 7vw, 72px) clamp(16px, 5vw, 48px)",
       }}
     >
-      <div className="mx-auto grid w-full max-w-6xl grid-cols-1 gap-8 md:grid-cols-[minmax(0,1fr)_minmax(0,1.1fr)] md:items-start md:gap-10 lg:gap-12">
-        {/* ── Left: problem copy + fading step caption ─────────────── */}
+      <div className="mx-auto grid w-full max-w-6xl grid-cols-1 gap-8 md:grid-cols-[minmax(0,1fr)_minmax(0,2fr)] md:items-start md:gap-10 lg:gap-12">
+        {/* ── Left: static problem copy ────────────────────────────── */}
         <div className="flex min-w-0 flex-col gap-6">
           <header
             style={{
@@ -204,18 +154,6 @@ export function AgentStoryCarousel() {
               gap: 10,
             }}
           >
-            <p
-              style={{
-                margin: 0,
-                fontSize: 11,
-                fontWeight: 700,
-                letterSpacing: "0.18em",
-                textTransform: "uppercase",
-                color: PALETTE.inkDim,
-              }}
-            >
-              The problem
-            </p>
             <h2
               style={{
                 margin: 0,
@@ -228,37 +166,17 @@ export function AgentStoryCarousel() {
             >
               Why agent IDs?
             </h2>
-            <p
-              style={{
-                margin: 0,
-                fontSize: "clamp(15px, 1.7vw, 17px)",
-                lineHeight: 1.55,
-                color: PALETTE.slate800,
-              }}
-            >
-              An agent ID is how those answers get carried in. Agent IDs help
-              services answer questions to make them feel confident.
-            </p>
           </header>
 
           <p
-            aria-live="polite"
             style={{
               margin: 0,
-              minHeight: "4.5em",
-              fontSize: "clamp(17px, 2.1vw, 22px)",
-              lineHeight: 1.45,
+              fontSize: "clamp(15px, 1.7vw, 18px)",
+              lineHeight: 1.55,
               color: PALETTE.slate800,
-              textAlign: "left",
-              opacity: captionOpacity,
-              transform:
-                reduced || captionOpacity === 1
-                  ? "translateY(0)"
-                  : "translateY(4px)",
-              transition: captionTransition,
             }}
           >
-            {SLIDES[captionIndex]?.caption}
+            {carouselProblemParagraph}
           </p>
         </div>
 

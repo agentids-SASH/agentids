@@ -6,9 +6,8 @@ import { useState } from "react";
 import { siteConfig } from "@/lib/site";
 
 const links = [
-  { href: "/", label: "Home" },
-  { href: "/memo", label: "Research" },
-  { href: "/demo", label: "Interactive demo" },
+  { href: "/research", label: "Research" },
+  { href: "/demo", label: "Demo" },
   { href: "/about", label: "About" },
   { href: "/join", label: "Join us" },
 ] as const;

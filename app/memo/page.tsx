@@ -24,14 +24,17 @@ const PDF_HREF = withPublicBasePath(
  * conclusion "5. Conclusion", which is a typo preserved verbatim in the
  * rendered heading but would read as an accidental duplicate in a nav
  * list).
+ *
+ * Per the SASH spec the level-2 sub-section entries (Specific Learnings,
+ * General Learnings) are intentionally omitted from the rail. The
+ * underlying `<h3>` headings remain in the article body so deep-links
+ * to those anchors continue to work.
  */
 const TOC_ITEMS: readonly MemoTocItem[] = [
   { id: "executive-summary", label: "Executive Summary", level: 1 },
   { id: "introduction", label: "1. Introduction", level: 1 },
   { id: "components", label: "2. Components of Agent IDs", level: 1 },
   { id: "landscape", label: "3. Mapping the existing ID landscape", level: 1 },
-  { id: "specific-learnings", label: "Specific Learnings", level: 2 },
-  { id: "general-learnings", label: "General Learnings", level: 2 },
   { id: "incentives", label: "4. Private incentives & gaps for agent IDs", level: 1 },
   { id: "options", label: "5. Options for implementing agent IDs", level: 1 },
   { id: "conclusion", label: "Conclusion", level: 1 },
@@ -46,12 +49,9 @@ export default function MemoPage() {
           <div className="sticky top-24 max-h-[calc(100vh-7rem)] overflow-y-auto pr-2">
             <MemoToc items={TOC_ITEMS} />
             <div className="mt-8 border-t border-slate-200 pt-5 text-xs text-slate-500">
-              <p className="font-semibold uppercase tracking-[0.18em] text-slate-500">
-                Original
-              </p>
               <a
                 href={PDF_HREF}
-                className="mt-2 inline-flex items-center gap-1 text-[#0f4c5c] hover:underline"
+                className="inline-flex items-center gap-1 text-[#0f4c5c] hover:underline"
               >
                 Download PDF
                 <span aria-hidden>↓</span>
@@ -73,7 +73,7 @@ export default function MemoPage() {
           {/* Masthead */}
           <header className="mb-10 border-b border-slate-200 pb-10">
             <p className="text-[11px] font-semibold uppercase tracking-[0.22em] text-[#0f4c5c]">
-              Singapore AI Safety Hub &middot; Policy memo
+              Policy memo
             </p>
             <h1 className="mt-4 text-4xl font-semibold tracking-tight text-[#1a2744] sm:text-[44px] sm:leading-[1.1]">
               Designing Agent IDs
@@ -93,12 +93,6 @@ export default function MemoPage() {
                 Download PDF
                 <span aria-hidden>↓</span>
               </a>
-              <Link
-                href="/figures"
-                className="inline-flex items-center gap-2 rounded-full border border-slate-300 px-4 py-1.5 font-medium text-[#1a2744] transition-colors hover:border-[#1a2744]"
-              >
-                Supporting figures
-              </Link>
             </div>
           </header>
 
@@ -1781,12 +1775,6 @@ export default function MemoPage() {
                 Download original PDF
                 <span aria-hidden>↓</span>
               </a>
-              <Link
-                href="/figures"
-                className="inline-flex items-center gap-2 rounded-full border border-slate-300 px-4 py-1.5 font-medium text-[#1a2744] transition-colors hover:border-[#1a2744]"
-              >
-                Supporting figures
-              </Link>
               <Link
                 href="/demo"
                 className="inline-flex items-center gap-2 rounded-full border border-slate-300 px-4 py-1.5 font-medium text-[#1a2744] transition-colors hover:border-[#1a2744]"

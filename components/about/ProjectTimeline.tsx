@@ -8,20 +8,21 @@ import {
   type CSSProperties,
   type KeyboardEvent,
 } from "react";
+import { aboutMilestones } from "@/lib/content";
 
 /**
  * ProjectTimeline
  * ───────────────
- * Horizontal milestone timeline for the /about page. Five clickable
- * markers along a single rule; clicking one expands an inline panel
- * below the timeline with a 20-30 word description. Only one panel is
- * open at a time (accordion); clicking the active marker collapses it.
+ * Horizontal milestone timeline for the /about page. Markers along a
+ * single rule; clicking one expands an inline panel below with the
+ * milestone description. Only one panel is open at a time (accordion);
+ * clicking the active marker collapses it.
  *
  * Layout matches the reference screenshot:
  *
- *   [ DATE ]    [ DATE ]    [ DATE ]    [ DATE ]    [ DATE ]
- *   ────▢────────▢────────▢────────▢────────▢────
- *   title       title       title       title       title
+ *   [ DATE ]    [ DATE ]    [ DATE ]    [ DATE ]
+ *   ────▢────────▢────────▢────────▢────
+ *   title       title       title       title
  *
  * Implementation:
  *   - CSS grid with one column per milestone; three rows (date/marker/title).
@@ -33,6 +34,8 @@ import {
  *   - ARIA pattern: tablist + tabpanel. Arrow keys move focus + selection
  *     between markers, Home/End jump to ends. Mirrors the keyboard model
  *     in `components/home/AgentStoryCarousel.tsx`.
+ *
+ * Milestone copy lives in `lib/content` (`aboutMilestones`).
  */
 
 type Milestone = {
@@ -42,46 +45,7 @@ type Milestone = {
   description: string;
 };
 
-// TODO: replace with final copy. Each `description` is a placeholder
-// in the 20-30 word range; keep it that length so the expanded panel
-// doesn't shift the team grid below by an unpredictable amount.
-const MILESTONES: readonly Milestone[] = [
-  {
-    id: "memo",
-    dateLabel: "Nov 2025",
-    title: "Policy memo",
-    description:
-      "First public memo laying out the case for verifiable identity infrastructure for AI agents and outlining the open research questions ahead.",
-  },
-  {
-    id: "poc",
-    dateLabel: "Jan 2026",
-    title: "Proof of concept",
-    description:
-      "Built an interactive proof of concept showing how an Agent ID could be issued, presented, and verified in a realistic service interaction.",
-  },
-  {
-    id: "stakeholders",
-    dateLabel: "Mar 2026",
-    title: "Stakeholder meetings",
-    description:
-      "Workshopped the approach with policymakers, researchers, and operators across multiple jurisdictions to pressure-test assumptions and refine scope.",
-  },
-  {
-    id: "site",
-    dateLabel: "Apr 2026",
-    title: "Public site",
-    description:
-      "Launched this site to bring the memo, the demo, and the working code together in one place that's easy to read, fork, and contribute to.",
-  },
-  {
-    id: "next",
-    dateLabel: "Q3 2026",
-    title: "Next steps",
-    description:
-      "Engaging standards bodies and pilot partners, expanding the proof of concept toward a deployable reference implementation, and growing the contributor base.",
-  },
-];
+const MILESTONES: readonly Milestone[] = aboutMilestones;
 
 // ─── prefers-reduced-motion (mirrors AgentStoryCarousel) ────────────────────
 
@@ -192,9 +156,6 @@ export function ProjectTimeline() {
     >
       <div className="mx-auto max-w-5xl">
         <div className="flex flex-col gap-3">
-          <p className="text-[11px] font-bold uppercase tracking-[0.18em] text-[#6B6B6B]">
-            How we got here
-          </p>
           <h2
             id={`${baseId}-heading`}
             className="text-2xl font-semibold tracking-tight text-[#1A2744] sm:text-3xl"
@@ -503,9 +464,6 @@ function ExpansionPanel({
       >
         {activeMilestone && (
           <div className="flex flex-col gap-2">
-            <p className="text-[11px] font-bold uppercase tracking-[0.16em] text-[#6B6B6B]">
-              {activeMilestone.dateLabel} · {activeMilestone.title}
-            </p>
             <p className="m-0 text-base leading-relaxed text-[#1F2937] sm:text-lg">
               {activeMilestone.description}
             </p>
