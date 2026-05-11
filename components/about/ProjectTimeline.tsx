@@ -155,18 +155,12 @@ export function ProjectTimeline() {
       style={{ padding: "clamp(56px, 10vw, 96px) clamp(16px, 5vw, 48px)" }}
     >
       <div className="mx-auto max-w-5xl">
-        <div className="flex flex-col gap-3">
-          <h2
-            id={`${baseId}-heading`}
-            className="text-2xl font-semibold tracking-tight text-[#1A2744] sm:text-3xl"
-          >
-            Project timeline
-          </h2>
-          <p className="max-w-2xl text-sm leading-relaxed text-[#6B6B6B]">
-            Click any milestone to read more. Use the arrow keys to step
-            through the timeline.
-          </p>
-        </div>
+        <h2
+          id={`${baseId}-heading`}
+          className="text-2xl font-semibold tracking-tight text-[#1A2744] sm:text-3xl"
+        >
+          Project timeline
+        </h2>
 
         {/* Horizontal timeline (≥ sm) */}
         <div
