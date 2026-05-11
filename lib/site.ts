@@ -28,6 +28,14 @@ export type Steward = {
   href: string;
 };
 
+/** Visual identity for stewards branding (linked `href`, typically AISafety.sg). */
+export type SashBrandConfig = {
+  href: string;
+  ariaLabel: string;
+  initiativeLockup: { src: string; width: number; height: number };
+  mark: { src: string; width: number; height: number };
+};
+
 export type HeroCta = {
   id: string;
   label: string;
@@ -63,10 +71,12 @@ export type ResearchOutput = {
   kind: string;
   title: string;
   /**
-   * Optional partner / stewardship line rendered under the title
-   * (e.g. "Singapore AI Safety Hub (SASH) & Concordia").
+   * Optional stewardship / partner credit under the card title.
+   * When `creditWithSashLogo` is true, an inline linked SASH mark is
+   * shown immediately before `credit` (e.g. `credit: "& Concordia"`).
    */
   credit?: string;
+  creditWithSashLogo?: boolean;
   summary: string;
   /** Where the card links to. Use "#" for items that aren't yet readable. */
   href: string;
@@ -139,6 +149,25 @@ export const siteConfig = {
       href: "https://www.aisafety.sg",
     },
   ] satisfies readonly Steward[],
+
+  /**
+   * Logo assets linking to AISafety.sg wherever SASH is shown as an
+   * institution reference (mastheads, stewardship strips, footer, etc.).
+   */
+  sashBrand: {
+    href: "https://www.aisafety.sg",
+    ariaLabel: "Singapore AI Safety Hub (SASH)",
+    initiativeLockup: {
+      src: "/images/stewards/sash-initiative-lockup.png",
+      width: 876,
+      height: 172,
+    },
+    mark: {
+      src: "/images/stewards/sash-mark.png",
+      width: 514,
+      height: 516,
+    },
+  } satisfies SashBrandConfig,
 
   /**
    * Partner logos in the bottom strip (`public/images/partners/`).
@@ -240,7 +269,8 @@ export const siteConfig = {
         date: "Coming soon",
         kind: "Policy memo",
         title: "Emergency Shutdown Mechanisms for AI Agents",
-        credit: "Singapore AI Safety Hub (SASH) & Concordia",
+        creditWithSashLogo: true,
+        credit: "& Concordia",
         summary:
           "A policy memo mapping threat models, technical requirements, and governance mechanisms for emergency shutdown of AI agents, with a focus on agent-level interventions triggered by third-party services.",
         href: "#",
@@ -293,7 +323,6 @@ export const siteConfig = {
       name: "Lance",
       title: "Contributor",
       bio: "",
-      pending: true,
     },
   ] satisfies readonly TeamMember[],
 
