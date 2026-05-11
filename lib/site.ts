@@ -232,7 +232,7 @@ export const siteConfig = {
         kind: "Policy memo",
         title: "Designing Agent IDs",
         summary:
-          "A SASH policy memo mapping the design space for agent ID systems: functions, existing protocols, private incentives, and ten guiding central design questions.",
+          "A policy memo mapping the design space for agent ID systems: functions, existing protocols, private incentives, and ten central design questions",
         href: "/memo",
         status: "published",
       },
