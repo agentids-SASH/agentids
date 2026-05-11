@@ -286,7 +286,7 @@ export const siteConfig = {
       id: "aditya",
       name: "Aditya Mehta",
       title: "Contributor",
-      bio: "Aditya is an AI Reporter at TechCrunch, supported by the Tarbell Center for AI Journalism. He contributed to Agent IDs as an ERA Technical Governance Fellow. He's a board member at the Berkeley AI Safety Initiative and has conducted research on AI Automation & Wellbeing at the Center for AI Safety.",
+      bio: "Aditya designed Agent ID proof of concepts as an ERA Technical Governance Fellow. Previously, he conducted research on AI Automation & Wellbeing at the Center for AI Safety. He's an incoming AI Reporter at TechCrunch, supported by the Tarbell Center for AI Journalism.",
     },
     {
       id: "lance",
