@@ -62,6 +62,11 @@ export type ResearchOutput = {
   /** Short kind label rendered as an eyebrow in research cards. */
   kind: string;
   title: string;
+  /**
+   * Optional partner / stewardship line rendered under the title
+   * (e.g. "Singapore AI Safety Hub (SASH) & Concordia").
+   */
+  credit?: string;
   summary: string;
   /** Where the card links to. Use "#" for items that aren't yet readable. */
   href: string;
@@ -241,6 +246,7 @@ export const siteConfig = {
         date: "Coming soon",
         kind: "Policy memo",
         title: "Emergency Shutdown Mechanisms for AI Agents",
+        credit: "Singapore AI Safety Hub (SASH) & Concordia",
         summary:
           "A policy memo mapping threat models, technical requirements, and governance mechanisms for emergency shutdown of AI agents, with a focus on agent-level interventions triggered by third-party services.",
         href: "#",
@@ -277,16 +283,16 @@ export const siteConfig = {
       bio: "Miro has a decade of experience across Europe and Asia as a product, governance and research management lead with SAP, ByteDance, University of Oxford and GovAI. He is the founder of the Singapore AI Safety Hub and a graduate of Schwarzman College at Tsinghua University.",
     },
     {
-      id: "aditya",
-      name: "Aditya Mehta",
-      title: "Contributor",
-      bio: "Aditya is an AI Reporter at TechCrunch, supported by the Tarbell Center for AI Journalism. He contributed to Agent IDs as an ERA Technical Governance Fellow. He's a board member at the Berkeley AI Safety Initiative and has conducted research at Center for AI Safety.",
-    },
-    {
       id: "zac",
       name: "Zac",
       title: "Fellow",
       bio: "Zac joined SASH as a Winter Fellow at Centre for the Governance of AI, where he worked on projects related to AI risk management and verification. Previously he worked in program management and headhunting for 80,000 Hours. He holds a master's degree in social psychology from LSE.",
+    },
+    {
+      id: "aditya",
+      name: "Aditya Mehta",
+      title: "Contributor",
+      bio: "Aditya is an AI Reporter at TechCrunch, supported by the Tarbell Center for AI Journalism. He contributed to Agent IDs as an ERA Technical Governance Fellow. He's a board member at the Berkeley AI Safety Initiative and has conducted research on AI Automation & Wellbeing at the Center for AI Safety.",
     },
     {
       id: "lance",

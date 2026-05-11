@@ -94,6 +94,12 @@ function ResearchCard({ item }: { item: ResearchOutput }) {
         )}
       </h3>
 
+      {item.credit ? (
+        <p className="text-xs leading-snug text-slate-500 sm:text-[13px]">
+          {item.credit}
+        </p>
+      ) : null}
+
       <p className="text-sm leading-relaxed text-slate-600">
         {item.summary}
       </p>
