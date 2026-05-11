@@ -119,7 +119,7 @@ export const joinHeroLede =
 export const joinHowToContribute =
   "We're building agent ID protocols in the open. Whether you want to contribute code, discuss adjacent work on agent governance, or share challenges you face managing agent infrastructure in practice — we'd like to hear from you.";
 
-export const joinClosingHeading = "let's talk.";
+export const joinClosingHeading = "Let's talk.";
 
 /* ── Home: JoinCommunity strip lede ─────────────────────────────────── */
 
