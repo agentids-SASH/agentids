@@ -141,8 +141,7 @@ export const siteConfig = {
   ] satisfies readonly Steward[],
 
   /**
-   * Partner logos in the bottom strip. Replace placeholder assets in
-   * `public/images/partners/` when official artwork is available.
+   * Partner logos in the bottom strip (`public/images/partners/`).
    *
    * Ordering reflects the spec: Singapore AISI first, Korea AISI second.
    */
@@ -150,18 +149,13 @@ export const siteConfig = {
     {
       name: "Singapore AI Safety Institute",
       shortName: "Singapore AISI",
-      // TODO: swap for the official Singapore AISI logo when supplied.
-      // The current asset filename is preserved for backwards compatibility
-      // with the existing public/images/partners/ folder.
-      image: "/images/partners/singapore-ac.svg",
-      // `href` left undefined until the official partner URL is shared.
+      image: "/images/partners/singapore-aisi.png",
       href: undefined,
     },
     {
       name: "Korea AI Safety Institute",
       shortName: "Korea AISI",
-      // TODO: swap for the official Korea AISI logo when supplied.
-      image: "/images/partners/korea-ac.svg",
+      image: "/images/partners/korea-aisi.jpg",
       href: undefined,
     },
   ] satisfies readonly PartnerLogo[],

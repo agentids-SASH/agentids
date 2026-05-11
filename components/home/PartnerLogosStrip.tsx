@@ -3,7 +3,7 @@ import { siteConfig } from "@/lib/site";
 import { withPublicBasePath } from "@/lib/paths";
 
 /**
- * Partner logos above the footer. Replace assets in public/images/partners/
+ * Partner logos above the footer. Assets live under `public/images/partners/`;
  * and set `href` on each entry in siteConfig.partnerLogos when URLs are final.
  */
 export function PartnerLogosStrip() {
@@ -27,7 +27,7 @@ export function PartnerLogosStrip() {
                 alt={logo.name}
                 width={160}
                 height={40}
-                className="h-10 w-auto max-w-[140px] object-contain opacity-90 grayscale transition-opacity hover:opacity-100 hover:grayscale-0"
+                className="h-10 w-auto max-w-[200px] object-contain opacity-90 transition-opacity hover:opacity-100"
               />
             );
             const inner = img;
