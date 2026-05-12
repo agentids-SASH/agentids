@@ -19,18 +19,25 @@ export function PartnerLogosStrip() {
         <p className="text-[11px] font-bold uppercase tracking-[0.18em] text-slate-500">
           Partners
         </p>
+
         <ul className="flex list-none flex-wrap items-center justify-center gap-x-10 gap-y-6">
           {logos.map((logo) => {
-            const img = (
-              <Image
-                src={withPublicBasePath(logo.image)}
-                alt={logo.name}
-                width={160}
-                height={40}
-                className="h-10 w-auto max-w-[200px] object-contain opacity-90 transition-opacity hover:opacity-100"
-              />
+            const inner = (
+              /* 1. The Bounding Box: 
+                We set a fixed height (h-10) and width (w-40) for the 'slot'.
+                'relative' is required for the Next.js 'fill' property to work.
+              */
+              <div className="relative h-10 w-40"> 
+                <Image
+                  src={withPublicBasePath(logo.image)}
+                  alt={logo.name}
+                  fill // 2. Forces image to fill the h-10 w-40 container
+                  className="object-contain opacity-80 transition-all hover:opacity-100" // 3. Maintains aspect ratio
+                  sizes="(max-width: 768px) 100vw, 160px"
+                />
+              </div>
             );
-            const inner = img;
+
             return (
               <li key={logo.shortName} className="flex items-center">
                 {logo.href ? (
@@ -49,6 +56,7 @@ export function PartnerLogosStrip() {
             );
           })}
         </ul>
+
       </div>
     </section>
   );
