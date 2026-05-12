@@ -23,18 +23,24 @@ export function PartnerLogosStrip() {
         <ul className="flex list-none flex-wrap items-center justify-center gap-x-10 gap-y-6">
           {logos.map((logo) => {
             const inner = (
-              /* 1. The Bounding Box: 
-                We set a fixed height (h-10) and width (w-40) for the 'slot'.
-                'relative' is required for the Next.js 'fill' property to work.
-              */
-              <div className="relative h-10 w-40"> 
-                <Image
-                  src={withPublicBasePath(logo.image)}
-                  alt={logo.name}
-                  fill // 2. Forces image to fill the h-10 w-40 container
-                  className="object-contain opacity-80 transition-all hover:opacity-100" // 3. Maintains aspect ratio
-                  sizes="(max-width: 768px) 100vw, 160px"
-                />
+              /* 1. Stacked Container: Stacks image and text vertically with a gap */
+              /* 2. The Bounding Box: Keeps the logo size consistent */
+              /* 3. Name: Clean, professional typography */
+              <div className="flex flex-col items-center gap-4">
+                
+                <div className="relative h-10 w-40"> 
+                  <Image
+                    src={withPublicBasePath(logo.image)}
+                    alt={logo.name}
+                    fill
+                    className="object-contain opacity-80 transition-all hover:opacity-100"
+                    sizes="(max-width: 768px) 100vw, 160px"
+                  />
+                </div>
+
+                <span className="text-[10px] font-bold normal-case tracking-[0.15em] text-slate-600 text-center">
+                  {logo.name}
+                </span>
               </div>
             );
 
