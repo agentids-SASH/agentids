@@ -242,7 +242,7 @@ export const siteConfig = {
         title: "Emergency Shutdown Mechanisms for AI Agents",
         // credit: "Singapore AI Safety Hub (SASH) & Concordia",
         summary:
-          "A policy memo mapping threat models, technical requirements, and governance mechanisms for emergency shutdown of AI agents, with a focus on agent-level interventions triggered by third-party services.",
+          "A policy memo mapping threat models, technical requirements, and governance mechanisms for emergency shutdown of AI agents.",
         href: "#",
         status: "coming-soon",
       },
