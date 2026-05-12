@@ -33,7 +33,7 @@ export default function ResearchPage() {
           </h1>
           <p className="max-w-2xl text-base leading-relaxed text-slate-700 sm:text-lg">
             Policy memos and applied research outputs from the Agent IDs
-            community. New work appears here as it ships.
+            community.
           </p>
         </div>
       </section>
