@@ -117,8 +117,8 @@ function ResearchCard({ item }: { item: ResearchOutput }) {
             href="/join"
             className="inline-flex items-center gap-1.5 text-sm font-semibold text-[#0f4c5c] underline-offset-4 hover:underline"
           >
-            Get notified
-            <span aria-hidden>→</span>
+            {/* Get notified
+            <span aria-hidden>→</span> */}
           </Link>
         </div>
       ) : null}
