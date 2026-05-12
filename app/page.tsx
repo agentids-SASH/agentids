@@ -20,7 +20,7 @@ export default function HomePage() {
   return (
     <div>
       {/* ── Hero ───────────────────────────────────────────────────── */}
-      <section className="relative overflow-hidden border-b border-white/10 bg-[#161616]">
+      <section className="relative overflow-hidden border-b border-white/10 bg-gradient-to-br from-[#1a2744] via-[#1a2744] to-[#0f4c5c]">
         <div
           className="pointer-events-none absolute inset-0 opacity-[0.14] mix-blend-overlay"
           style={heroNoiseStyle}
