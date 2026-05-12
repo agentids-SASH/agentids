@@ -154,6 +154,7 @@ export function AgentStoryCarousel() {
               gap: 10,
             }}
           >
+            <br />
             <h2
               style={{
                 margin: 0,
