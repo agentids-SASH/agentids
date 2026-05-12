@@ -30,7 +30,7 @@ export const bankQuestions = [
 
 export const workstreamsLede = [
   "We want to advance secure and robust agent IDs globally. We define technical protocols, build proof of concepts and conduct policy research.",
-  "Our edge? We engage a diverse set of industry and government stakeholders to develop truly open agent ID solutions, interoperable with existing private and public identity infrastructure, and work directly with regulators to create the necessary governance processes to facilitate broad use of agent IDs.",
+  "Our edge? We engage a diverse set of stakeholders to develop truly open agent ID solutions, interoperable with existing private and public identity infrastructure. We work directly with regulators to create the governance processes necessary for broad adoption.",
 ] as const;
 
 /* ── Landing + /demo: shared description of the technical demo ──────── */
