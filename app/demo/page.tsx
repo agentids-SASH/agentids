@@ -146,6 +146,15 @@ export default function DemoPage() {
                 href={fullTechnicalDemo}
           />
 
+          {/* Large 1x1 Feature Image */}
+          <div className="mt-8 overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-[0_2px_4px_rgba(15,23,42,0.05),0_12px_28px_rgba(15,23,42,0.06)]">
+            <img
+              src="/images/home/full-demo-agent-id-testbed.png" 
+              alt="Full Technical Demo Preview"
+              className="aspect-video w-full object-cover transition-transform duration-700 hover:scale-[1.02]"
+            />
+          </div>
+
           {/* <PocViewSwitcher className="mt-8" />
 
           <div className="mx-auto mt-10 max-w-3xl rounded-lg border border-slate-200 bg-white px-4 py-5 text-sm leading-relaxed text-slate-700 sm:px-5">
