@@ -3,6 +3,7 @@ import path from "path";
 import { fileURLToPath } from "url";
 
 const projectRoot = path.dirname(fileURLToPath(import.meta.url));
+const isGitHubPages = process.env.GITHUB_ACTIONS === 'true';
 
 /** Set in GitHub Actions to the repo name, e.g. `/agent-ID-PoC-website` for Pages. Leave unset for local `next dev`. */
 const rawBase = process.env.NEXT_PUBLIC_BASE_PATH?.trim() ?? "";
@@ -14,7 +15,7 @@ const basePath =
       : `/${rawBase}`;
 
 const nextConfig: NextConfig = {
-  output: "standalone",
+  output: isGitHubPages ? "export" : "standalone",
   images: {
     unoptimized: true,
   },
