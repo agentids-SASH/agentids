@@ -264,6 +264,7 @@ export const siteConfig = {
       title: "Technical Lead",
       bio: "Sam previously worked as a Senior Software Engineer at Google, as a legislative staffer in the US Senate, and as a Research Fellow at The Future Society, focused on US AI Governance. He holds an undergraduate and master's degree in computer science from Brown University.",
       photo: "/images/team/Sam-Boger.jpg",
+      linkedinUrl: "https://www.linkedin.com/in/sam-boger/",
     },
     {
       id: "amin",
@@ -271,6 +272,7 @@ export const siteConfig = {
       title: "Governance Lead",
       bio: "Amin is an affiliate at the University of Oxford and a Senior Associate at The Future Society, focused on European AI governance. Previously, he was a technical project lead at McKinsey. He advises governments and technology leaders on navigating frontier AI risk.",
       photo: "/images/team/Amin-Oueslati.jpg",
+      linkedinUrl: "https://www.linkedin.com/in/aminoueslati/",
     },
     {
       id: "miro",
@@ -278,6 +280,7 @@ export const siteConfig = {
       title: "Strategy Lead",
       bio: "Miro has a decade of experience across Europe and Asia as a product, governance and research management lead with SAP, ByteDance, University of Oxford and GovAI. He is the founder of the Singapore AI Safety Hub and a graduate of Schwarzman College at Tsinghua University.",
       photo: "/images/team/Miro-Pluckebaum.jpg",
+      linkedinUrl: "https://www.linkedin.com/in/miro-pluckebaum/", 
     },
     {
       id: "zac",
@@ -285,6 +288,7 @@ export const siteConfig = {
       title: "Fellow",
       bio: "Zac joined SASH as a Winter Fellow at Centre for the Governance of AI, where he worked on projects related to AI risk management and verification. Previously he worked in program management and headhunting for 80,000 Hours. He holds a master's degree in social psychology from LSE.",
       photo: "/images/team/Zac-Richardson.jpg",
+      linkedinUrl: "https://www.linkedin.com/in/zachary-richardson-7536751b8/",
     },
     {
       id: "aditya",
@@ -292,6 +296,7 @@ export const siteConfig = {
       title: "Contributor",
       bio: "Aditya designed Agent ID proof of concepts as an ERA Technical Governance Fellow. Previously, he conducted research on AI Automation & Wellbeing at the Center for AI Safety. He's an incoming AI Reporter at TechCrunch, supported by the Tarbell Center for AI Journalism.",
       photo: "/images/team/Aditya-Mehta.jpg",
+      linkedinUrl: "https://www.linkedin.com/in/aditya-mehta-7892311a2/",
     },
     {
       id: "lance",
