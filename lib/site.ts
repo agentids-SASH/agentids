@@ -209,14 +209,14 @@ export const siteConfig = {
     videos: [
       {
         id: "v1",
-        title: "Navigating the agentID memo",
-        youtubeId: "",
+        title: "Navigating the agentID Technical Demo",
+        youtubeId: "https://youtu.be/PS2of3azpHo",
       },
       {
         id: "v2",
         title:
           "Creating and using the agent ID in an exchange between an internet service and an AI agent",
-        youtubeId: "",
+        youtubeId: "https://youtu.be/x4NPXtweFTU",
       },
       {
         id: "v3",
