@@ -113,7 +113,7 @@ export default function HomePage() {
             />
           </div>
 
-          <PocViewSwitcher className="mt-12" />
+          {/* <PocViewSwitcher className="mt-12" /> */}
         </div>
       </section>
 
