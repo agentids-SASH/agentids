@@ -1,6 +1,7 @@
 import Image from "next/image";
 import { siteConfig, type TeamMember } from "@/lib/site";
 import { withPublicBasePath } from "@/lib/paths";
+import { FaLinkedinIn } from 'react-icons/fa';
 
 /**
  * TeamGrid
@@ -59,7 +60,7 @@ export default TeamGrid;
 
 function TeamCard({ person }: { person: TeamMember }) {
   const isPending = person.pending === true;
-  const className = `flex h-full flex-col rounded-2xl border ${
+  const className = `relative flex h-full flex-col rounded-2xl border ${
     isPending
       ? "border-dashed border-[rgba(26,26,26,0.18)] bg-white/60"
       : "border-[rgba(26,26,26,0.12)] bg-white shadow-[0_1px_3px_rgba(26,39,68,0.08),0_8px_24px_rgba(26,39,68,0.06)]"
@@ -74,7 +75,7 @@ function TeamCard({ person }: { person: TeamMember }) {
             {person.title}
           </p>
           <p className="mt-2 text-lg font-semibold leading-snug text-[#1A1A1A]">
-            <NameOrLink person={person} />
+            {person.name}
           </p>
           {isPending && (
             <span className="mt-3 inline-flex items-center gap-1.5 rounded-full border border-[rgba(26,26,26,0.18)] bg-[rgba(26,26,26,0.04)] px-2.5 py-1 text-[10px] font-semibold uppercase tracking-[0.16em] text-[#6B6B6B]">
@@ -90,7 +91,10 @@ function TeamCard({ person }: { person: TeamMember }) {
         ) : (
           <BioSkeleton />
         )}
-      </div>
+      </div> 
+
+      <LinkedInLink person={person} />
+
     </article>
   );
 }
@@ -117,21 +121,26 @@ function Avatar({ person }: { person: TeamMember }) {
   );
 }
 
-function NameOrLink({ person }: { person: TeamMember }) {
-  if (person.linkedinUrl && !person.pending) {
+function LinkedInLink({ person }: { person: TeamMember }) {
+  // We only show the bubble if the link exists
+  if (person.linkedinUrl) {
     return (
       <a
         href={person.linkedinUrl}
         target="_blank"
         rel="noreferrer"
-        className="underline-offset-4 hover:text-[#1A2744] hover:underline"
+        aria-label={`${person.name}'s LinkedIn Profile`}
+        className="absolute bottom-4 right-4 flex h-8 w-8 items-center justify-center rounded-lg bg-[#1A2744] text-white transition-all hover:scale-110 hover:bg-[#0077B5] focus:outline-none focus:ring-2 focus:ring-[#1A2744] focus:ring-offset-2"
       >
-        {person.name}
+        <FaLinkedinIn className="h-4 w-4" />
       </a>
     );
   }
-  return <>{person.name}</>;
+
+  // Fallback: Return null so nothing renders in the corner if no link is present
+  return null;
 }
+
 
 function BioSkeleton() {
   return (
