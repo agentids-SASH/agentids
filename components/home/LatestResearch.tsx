@@ -32,6 +32,10 @@ export function LatestResearch() {
             className="text-3xl font-semibold tracking-tight text-[#1a2744] sm:text-4xl"
           >
             Research
+            <div
+              className="mt-3 h-px max-w-md bg-gradient-to-r from-[#ea580c] via-[#ea580c]/50 to-transparent"
+              aria-hidden
+            />
           </h2>
           <Link
             href="/research"

@@ -167,6 +167,10 @@ export function AgentStoryCarousel() {
             >
               Why agent IDs?
             </h2>
+            <div
+              className="mt-3 h-px max-w-md bg-gradient-to-r from-[#ea580c] via-[#ea580c]/50 to-transparent"
+              aria-hidden
+            />
           </header>
 
           <p
