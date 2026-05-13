@@ -14,7 +14,7 @@ const basePath =
       : `/${rawBase}`;
 
 const nextConfig: NextConfig = {
-  output: "export",
+  output: "standalone",
   images: {
     unoptimized: true,
   },
