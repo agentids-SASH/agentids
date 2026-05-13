@@ -43,6 +43,7 @@ export type DemoVideo = {
    * in that slot rather than an empty iframe.
    */
   youtubeId: string;
+  videoId: string; // Added videoId field for direct YouTube embedding
 };
 
 export type DemoConfig = {
@@ -211,17 +212,20 @@ export const siteConfig = {
         id: "v1",
         title: "Navigating the agentID Technical Demo",
         youtubeId: "https://youtu.be/PS2of3azpHo",
+        videoId: "PS2of3azpHo"
       },
       {
         id: "v2",
         title:
           "Creating and using the agent ID in an exchange between an internet service and an AI agent",
         youtubeId: "https://youtu.be/x4NPXtweFTU",
+        videoId: "x4NPXtweFTU"
       },
       {
         id: "v3",
         title: "Using the agent ID for incident response",
         youtubeId: "",
+        videoId: ""
       },
     ],
   } satisfies DemoConfig,

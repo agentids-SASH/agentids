@@ -34,22 +34,35 @@ export function DemoVideo({
   caption,
   className = "",
 }: DemoVideoProps) {
+  // const videoId = video.youtubeId.trim();
   const hasVideo = video.youtubeId.trim() !== "";
+  const thumbnailUrl = `https://i.ytimg.com/vi/${video.videoId.trim()}/maxresdefault.jpg`;
 
   return (
     <figure className={className}>
-      <div className="relative w-full overflow-hidden rounded-2xl border border-slate-200 bg-slate-900 shadow-[0_2px_4px_rgba(15,23,42,0.05),0_12px_28px_rgba(15,23,42,0.06)]">
+      <div className="group relative w-full overflow-hidden rounded-2xl border border-slate-200 bg-slate-900 shadow-[0_2px_4px_rgba(15,23,42,0.05),0_12px_28px_rgba(15,23,42,0.06)]">
         <div className="relative aspect-video w-full">
           {hasVideo ? (
-            <iframe
-              className="absolute inset-0 h-full w-full"
-              src={`https://www.youtube-nocookie.com/embed/${video.youtubeId}`}
-              title={video.title}
-              loading="lazy"
-              allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-              referrerPolicy="strict-origin-when-cross-origin"
-              allowFullScreen
-            />
+            <a
+              href={video.youtubeId}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="absolute inset-0 block h-full w-full"
+            >
+              {/* Thumbnail Image */}
+              <img
+                src={thumbnailUrl}
+                alt={video.title}
+                className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+              />
+              
+              {/* Play Button Overlay */}
+              <div className="absolute inset-0 flex items-center justify-center bg-black/10 transition-colors group-hover:bg-black/30">
+                <div className="flex h-16 w-16 items-center justify-center rounded-full bg-white/90 text-[#1a2744] shadow-xl transition-transform group-hover:scale-110">
+                  <PlayIcon />
+                </div>
+              </div>
+            </a>
           ) : (
             <Placeholder title={video.title} />
           )}
@@ -69,6 +82,62 @@ export function DemoVideo({
     </figure>
   );
 }
+
+// Simple Play Icon Sub-component
+function PlayIcon() {
+  return (
+    <svg 
+      viewBox="0 0 24 24" 
+      fill="currentColor" 
+      className="ml-1 h-8 w-8"
+    >
+      <path d="M8 5v14l11-7z" />
+    </svg>
+  );
+}
+
+
+// export function DemoVideo({
+//   video,
+//   hideTitle = false,
+//   caption,
+//   className = "",
+// }: DemoVideoProps) {
+//   const hasVideo = video.youtubeId.trim() !== "";
+
+//   return (
+//     <figure className={className}>
+//       <div className="relative w-full overflow-hidden rounded-2xl border border-slate-200 bg-slate-900 shadow-[0_2px_4px_rgba(15,23,42,0.05),0_12px_28px_rgba(15,23,42,0.06)]">
+//         <div className="relative aspect-video w-full">
+//           {hasVideo ? (
+//             <iframe
+//               className="absolute inset-0 h-full w-full"
+//               src={`https://www.youtube-nocookie.com/embed/${video.youtubeId}`}
+//               title={video.title}
+//               loading="lazy"
+//               allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+//               referrerPolicy="strict-origin-when-cross-origin"
+//               allowFullScreen
+//             />
+//           ) : (
+//             <Placeholder title={video.title} />
+//           )}
+//         </div>
+//       </div>
+
+//       {(!hideTitle || caption) && (
+//         <figcaption className="mt-3 flex flex-col gap-1 text-sm">
+//           {!hideTitle && (
+//             <span className="font-medium text-[#1a2744]">{video.title}</span>
+//           )}
+//           {caption && (
+//             <span className="text-slate-600">{caption}</span>
+//           )}
+//         </figcaption>
+//       )}
+//     </figure>
+//   );
+// }
 
 export default DemoVideo;
 
