@@ -36,7 +36,7 @@ export const workstreamsLede = [
 /* ── Landing + /demo: shared description of the technical demo ──────── */
 
 export const demoIntroParagraphs = [
-  "The demo is an interactive explanation, demonstration, and implementation of a secure and robust agent ID protocol. It details and documents the specific steps each entity takes to allow an AI agent to securely access a remote service on behalf of its deployer.",
+  "The demo is an interactive explanation, demonstration, and implementation of an agent ID protocol. It details and documents the specific steps each entity takes to allow an AI agent to securely access a remote service on behalf of its deployer.",
   "Currently the demo follows a scripted set of steps that show how each component of the agent ID is assembled and used. Next, we will fully implement each entity's role so a viewer can inspect the network requests and server code as the process runs in real time.",
 ] as const;
 

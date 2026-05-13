@@ -59,7 +59,7 @@ export default function DemoPage() {
         className="border-b border-[rgba(26,26,26,0.12)] bg-white"
       >
         <div className="mx-auto w-full max-w-6xl px-4 py-12 sm:px-6 sm:py-14">
-          <div className="flex flex-col gap-2">
+          <div className="text-center flex flex-col gap-2">
             <h2
               id="walkthrough-heading"
               className="text-2xl font-semibold tracking-tight text-[#1a2744] sm:text-3xl"
@@ -71,7 +71,7 @@ export default function DemoPage() {
             </p>
           </div>
 
-          <ul className="mt-8 grid list-none gap-6 md:grid-cols-2 xl:grid-cols-3">
+          <ul className="text-center mt-8 grid list-none gap-6 md:grid-cols-2 xl:grid-cols-3">
             {videos.map((video, i) => (
               <li key={video.id}>
                 <DemoVideo
@@ -92,11 +92,11 @@ export default function DemoPage() {
         <div className="mx-auto w-full max-w-4xl px-4 py-12 sm:px-6 sm:py-16">
           <h2
             id="purposes-heading"
-            className="text-2xl font-semibold tracking-tight text-[#1a2744] sm:text-3xl"
+            className="text-center text-2xl font-semibold tracking-tight text-[#1a2744] sm:text-3xl"
           >
             Purposes
           </h2>
-          <ul className="mt-6 flex list-none flex-col gap-4 text-base leading-relaxed text-slate-700">
+          <ul className="text-center mt-6 flex list-none flex-col gap-4 text-base leading-relaxed text-slate-700">
             {demoPurposes.map((p) => (
               <li key={p.label} className="rounded-2xl border border-slate-200 bg-white p-5">
                 <p>
@@ -144,15 +144,15 @@ export default function DemoPage() {
           <ul className="mt-6 flex list-none flex-col gap-3">
             <li>
               <ResourceLink
-                label="View the code behind the technical demo"
-                href={pocRepoUrl}
+                label="Read the design doc — requirements and architecture"
+                href={designDocUrl}
+                hint="Builds on our policy memo."
               />
             </li>
             <li>
               <ResourceLink
-                label="Read the design doc — requirements and architecture"
-                href={designDocUrl}
-                hint="Builds on our policy memo."
+                label="View the code behind the technical demo"
+                href={pocRepoUrl}
               />
             </li>
           </ul>

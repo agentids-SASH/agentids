@@ -178,7 +178,7 @@ export const siteConfig = {
    * before the public launch (spec note: "We need to link an email that
    * is actually monitored.").
    */
-  contactEmail: "agent-ids@aisafety.sg",
+  contactEmail: "agentids@aisafety.sg",
 
   /**
    * GitHub URL kept for backwards compatibility (referenced by older
