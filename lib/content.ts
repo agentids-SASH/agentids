@@ -93,21 +93,21 @@ export const aboutMilestones = [
     dateLabel: "Q2 2026",
     title: "Demo & partnerships",
     description:
-      "Develop a complete technical demo for an illustrative use case. Workshops at ISE & ATX in Singapore. Onboarded Korea AISI as core partner, exchanges with 3 more key government partners.",
+      "Develop a complete technical demo for an illustrative use case. Workshops at ISE & ATX in Singapore. Onboarded Korea AISI as core partner.",
   },
   {
     id: "q3-2026",
     dateLabel: "Q3 2026",
     title: "Implementation & policy",
     description:
-      "Fully implement cryptography and server code for the technical demo, enabling simulations and tabletop exercises. Supporting policy research, e.g. on emergency shutdowns. Workshops with industry leaders, including frontier AI developers, agent providers and enterprises. Expanding core project partners.",
+      "Fully implement cryptography and server code for the technical demo, enabling simulations and tabletop exercises. Additional research outputs, e.g. on agent emergency shutdowns. Workshops with industry leaders, including frontier AI developers, agent providers and enterprises. Expanding core project partners.",
   },
   {
     id: "q4-2026",
     dateLabel: "Q4 2026",
-    title: "Testbed & standardisation",
+    title: "Testbed & adoption",
     description:
-      "Fully functional testbed for configuring, observing, and simulating AI agents. Perpetuating project governance, advancing formalization of standard in key global fora.",
+      "Fully functional testbed for configuring, observing, and simulating AI agents. Perpetuating project governance, advancing the protocol's recognition in key global fora.",
   },
 ] as const;
 
