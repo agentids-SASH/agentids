@@ -46,6 +46,8 @@ export type DemoVideo = {
 };
 
 export type DemoConfig = {
+  /** URL for the full technical demo. */
+  fullTechnicalDemo: string;
   /** Public repo holding the proof-of-concept code. Empty until ready. */
   pocRepoUrl: string;
   /** Public design doc / requirements writeup for the demo. Empty until ready. */
@@ -195,10 +197,15 @@ export const siteConfig = {
    * "TBA" badges. Filling these in is the launch checklist.
    */
   demo: {
+    // Placeholder for full technical demo URL.
+    fullTechnicalDemo: "https://agentids-sash.github.io/agentids-technical-demo/",
+
     // TODO: add link to new repo with PoC.
-    pocRepoUrl: "",
+    pocRepoUrl: "https://github.com/agentids-SASH/agentids-technical-demo",
+
     // TODO: add link after checking with Sam.
     designDocUrl: "",
+
     videos: [
       {
         id: "v1",

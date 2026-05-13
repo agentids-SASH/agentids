@@ -35,7 +35,7 @@ export const metadata: Metadata = {
  * live in `siteConfig.demo`. This page does not own copy or URLs.
  */
 export default function DemoPage() {
-  const { videos, pocRepoUrl, designDocUrl } = siteConfig.demo;
+  const { videos, pocRepoUrl, designDocUrl, fullTechnicalDemo } = siteConfig.demo;
 
   return (
     <div className="bg-[#FBF7F0] text-[#1A1A1A]">
@@ -138,9 +138,7 @@ export default function DemoPage() {
           >
             Design &amp; Code
           </h2>
-          <p className="mt-3 text-base leading-relaxed text-slate-700">
-            We&apos;re building in public.
-          </p>
+
           <ul className="mt-6 flex list-none flex-col gap-3">
             <li>
               <ResourceLink
@@ -171,7 +169,15 @@ export default function DemoPage() {
           >
             Full demo
           </h2>
-          <PocViewSwitcher className="mt-8" />
+          
+          <br />
+
+          <ResourceLink
+                label="We&apos;re building in public — explore the demo yourself!"
+                href={fullTechnicalDemo}
+          />
+
+          {/* <PocViewSwitcher className="mt-8" />
 
           <div className="mx-auto mt-10 max-w-3xl rounded-lg border border-slate-200 bg-white px-4 py-5 text-sm leading-relaxed text-slate-700 sm:px-5">
             <h3 className="font-semibold text-[#1a2744]">
@@ -189,7 +195,7 @@ export default function DemoPage() {
               missing credential sections cause hard stops, not gradual
               degradation.
             </p>
-          </div>
+          </div> */}
         </div>
       </section>
 
