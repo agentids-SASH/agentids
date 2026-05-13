@@ -86,7 +86,7 @@ export const aboutMilestones = [
     dateLabel: "Q1 2026",
     title: "Foundations",
     description:
-      "Published foundational policy memo. Launched applied pilot in partnership with Singapore AISIs.",
+      "Published foundational policy memo. Launched applied pilot in partnership with Singapore AISI.",
   },
   {
     id: "q2-2026",
