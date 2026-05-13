@@ -126,43 +126,12 @@ export default function DemoPage() {
         </div>
       </section>
 
-      {/* ── Design & Code ─────────────────────────────────────────── */}
-      <section
-        aria-labelledby="design-code-heading"
-        className="border-b border-[rgba(26,26,26,0.12)] bg-white"
-      >
-        <div className="mx-auto w-full max-w-4xl px-4 py-12 sm:px-6 sm:py-14">
-          <h2
-            id="design-code-heading"
-            className="text-2xl font-semibold tracking-tight text-[#1a2744] sm:text-3xl"
-          >
-            Design &amp; Code
-          </h2>
-
-          <ul className="mt-6 flex list-none flex-col gap-3">
-            <li>
-              <ResourceLink
-                label="Read the design doc — requirements and architecture"
-                href={designDocUrl}
-                hint="Builds on our policy memo."
-              />
-            </li>
-            <li>
-              <ResourceLink
-                label="View the code behind the technical demo"
-                href={pocRepoUrl}
-              />
-            </li>
-          </ul>
-        </div>
-      </section>
-
       {/* ── Full embedded demo ─────────────────────────────────────── */}
       <section
         aria-labelledby="full-demo-heading"
         className="border-b border-[rgba(26,26,26,0.12)]"
       >
-        <div className="mx-auto w-full max-w-6xl px-4 py-12 sm:px-6 sm:py-14">
+        <div className="mx-auto w-full max-w-4xl px-4 py-12 sm:px-6 sm:py-14">
           <h2
             id="full-demo-heading"
             className="text-2xl font-semibold tracking-tight text-[#1a2744] sm:text-3xl"
@@ -196,6 +165,37 @@ export default function DemoPage() {
               degradation.
             </p>
           </div> */}
+        </div>
+      </section>
+
+      {/* ── Design & Code ─────────────────────────────────────────── */}
+      <section
+        aria-labelledby="design-code-heading"
+        className="border-b border-[rgba(26,26,26,0.12)] bg-white"
+      >
+        <div className="mx-auto w-full max-w-4xl px-4 py-12 sm:px-6 sm:py-14">
+          <h2
+            id="design-code-heading"
+            className="text-2xl font-semibold tracking-tight text-[#1a2744] sm:text-3xl"
+          >
+            Design &amp; Code
+          </h2>
+
+          <ul className="mt-6 flex list-none flex-col gap-3">
+            <li>
+              <ResourceLink
+                label="Read the design doc — requirements and architecture"
+                href={designDocUrl}
+                hint="Builds on our policy memo."
+              />
+            </li>
+            <li>
+              <ResourceLink
+                label="View the code behind the technical demo"
+                href={pocRepoUrl}
+              />
+            </li>
+          </ul>
         </div>
       </section>
 
