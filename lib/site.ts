@@ -311,9 +311,11 @@ export const siteConfig = {
     },
     {
       id: "lance",
-      name: "Lance",
+      name: "Lance Jabr",
       title: "Contributor",
-      bio: "",
+      bio: "Lance is a software engineer and IT leader in the San Francisco Bay Area, working at the intersection of technology and the arts. He holds a master's of music from NYU and a bachelor's in computer science from Brown University.",
+      photo: "/images/team/Lance-Jabr.jpg",
+      linkedinUrl: "https://www.linkedin.com/in/lancejabr/",
     },
   ] satisfies readonly TeamMember[],
 
