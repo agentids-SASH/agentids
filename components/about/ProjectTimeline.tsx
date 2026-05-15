@@ -279,8 +279,8 @@ export function ProjectTimeline() {
                     aria-hidden
                     className="absolute left-0 top-[18px]"
                     style={{
-                      width: 12,
-                      height: 12,
+                      width: 18,
+                      height: 18,
                       borderRadius: 2,
                       border: "1px solid #1A2744",
                       background: isActive ? "#1A2744" : "#F5F0E8",
@@ -375,8 +375,8 @@ function MarkerCell({
         <span
           aria-hidden
           style={{
-            width: 12,
-            height: 12,
+            width: 30,
+            height: 30,
             borderRadius: 2,
             border: "1px solid #1A2744",
             background: isActive ? "#1A2744" : "#F5F0E8",
