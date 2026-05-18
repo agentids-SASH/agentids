@@ -141,13 +141,17 @@ export default function DemoPage() {
           
           <br />
 
-          <ResourceLink
-                label="We&apos;re building in public — explore the demo yourself!"
-                href={fullTechnicalDemo}
-          />
+          {/* Wrap in Explicit ID for Analytics tracking */}
+          <span id="full-demo-link">
+            <ResourceLink
+                  label="We&apos;re building in public — explore the demo yourself!"
+                  href={fullTechnicalDemo}
+            />
+          </span>
 
           {/* Large 1x1 Feature Image */}
           <a 
+            id="full-demo-link" // ← Explicit ID for Analytics tracking
             href={fullTechnicalDemo}
             target="_blank"
             className="mt-8 overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-[0_2px_4px_rgba(15,23,42,0.05),0_12px_28px_rgba(15,23,42,0.06)]"

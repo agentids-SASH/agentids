@@ -78,6 +78,7 @@ export default function JoinPage() {
 
           {/* 1. Email (Primary Action) */}
           <a
+            id="cta-email" // ← Explicit ID for Analytics tracking
             href={MAIL_HREF("Agent IDs — questions")}
             className="inline-flex flex-shrink-0 rounded-full bg-white px-5 py-2.5 text-sm font-semibold text-[#1a2744] transition-colors hover:bg-zinc-100"
           >
@@ -87,7 +88,9 @@ export default function JoinPage() {
 
           {/* 2. Subscribe to Newsletter (Secondary Action) */}
           <a
+            id="cta-newsletter" // ← Explicit ID for Analytics tracking
             href={NEWSLETTER_HREF}
+            target="_blank" 
             className="inline-flex items-center justify-center rounded-full border border-white px-5 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-white/10 focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-[#1a2744]"
           >
             Subscribe to newsletter
