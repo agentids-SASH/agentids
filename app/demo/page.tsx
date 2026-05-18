@@ -147,13 +147,17 @@ export default function DemoPage() {
           />
 
           {/* Large 1x1 Feature Image */}
-          <div className="mt-8 overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-[0_2px_4px_rgba(15,23,42,0.05),0_12px_28px_rgba(15,23,42,0.06)]">
+          <a 
+            href={fullTechnicalDemo}
+            target="_blank"
+            className="mt-8 overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-[0_2px_4px_rgba(15,23,42,0.05),0_12px_28px_rgba(15,23,42,0.06)]"
+          >
             <img
               src="/images/home/full-demo-agent-id-testbed.png" 
               alt="Full Technical Demo Preview"
               className="aspect-video w-full object-cover transition-transform duration-700 hover:scale-[1.02]"
             />
-          </div>
+          </a>
 
           {/* <PocViewSwitcher className="mt-8" />
 
