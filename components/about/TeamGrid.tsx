@@ -125,15 +125,27 @@ function LinkedInLink({ person }: { person: TeamMember }) {
   // We only show the bubble if the link exists
   if (person.linkedinUrl) {
     return (
-      <a
-        href={person.linkedinUrl}
-        target="_blank"
-        rel="noreferrer"
-        aria-label={`${person.name}'s LinkedIn Profile`}
-        className="absolute bottom-4 right-4 flex h-8 w-8 items-center justify-center rounded-lg bg-[#1A2744] text-white transition-all hover:scale-110 hover:bg-[#0077B5] focus:outline-none focus:ring-2 focus:ring-[#1A2744] focus:ring-offset-2"
-      >
-        <FaLinkedinIn className="h-4 w-4" />
-      </a>
+      <div className="mt-4 flex justify-start w-full">
+        {/* Break Line */}
+        <br />
+
+        <a
+          href={person.linkedinUrl}
+          target="_blank"
+          rel="noreferrer"
+          aria-label={`${person.name}'s LinkedIn Profile`}
+          className="inline-flex w-fit items-center gap-2 rounded border border-zinc-300 bg-transparent px-3 py-1.5 text-xs font-semibold uppercase tracking-wider text-zinc-800 transition-all hover:bg-zinc-100/60 hover:border-zinc-400 focus:outline-none focus:ring-2 focus:ring-[#1A2744]/20"
+        >
+          {/* Solid square tile background */}
+          <span className="flex h-4 w-4 items-center justify-center rounded-sm bg-[#9E472A] text-white select-none">
+            <FaLinkedinIn className="h-2.5 w-2.5" />
+          </span>
+          
+          <span className="text-[#1A2744] font-semibold tracking-[0.08em]">
+            LinkedIn
+          </span>
+        </a>
+      </div>
     );
   }
 
