@@ -184,6 +184,22 @@ export const siteConfig = {
   contactEmail: "agentids@aisafety.sg",
 
   /**
+   * Destination URL for the newsletter registration flow or landing page.
+   * TODO: verify the external form handler or list subscription automation 
+   * is active before launch (spec note: "Ensure the audience submission pipeline 
+   * handles intake cleanly.").
+   */
+  newsletterUrl: "https://airtable.com/appJdkIXtMOmW1J5D/pagb9n463ioyPSUxI/form",
+
+  /**
+   * Permanent invitation link for the community Slack workspace. 
+   * TODO: replace with the final static invite link once workspace access 
+   * policies are finalized (spec note: "Keep unclickable or bounded by a 'Soon' 
+   * state until public rollout.").
+   */
+  slackUrl: "",
+
+  /**
    * GitHub URL kept for backwards compatibility (referenced by older
    * components and link metadata). The hero no longer surfaces a "View
    * on GitHub" link per the spec.

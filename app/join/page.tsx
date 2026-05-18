@@ -14,6 +14,8 @@ export const metadata: Metadata = {
 };
 
 const CONTACT_EMAIL = siteConfig.contactEmail;
+const SLACK_HREF = siteConfig.slackUrl;
+const NEWSLETTER_HREF = siteConfig.newsletterUrl;
 const MAIL_HREF = (subject: string) =>
   `mailto:${CONTACT_EMAIL}?subject=${encodeURIComponent(subject)}`;
 
@@ -73,6 +75,8 @@ export default function JoinPage() {
               {joinClosingHeading}
             </h2>
           </div>
+
+          {/* 1. Email (Primary Action) */}
           <a
             href={MAIL_HREF("Agent IDs — questions")}
             className="inline-flex flex-shrink-0 rounded-full bg-white px-5 py-2.5 text-sm font-semibold text-[#1a2744] transition-colors hover:bg-zinc-100"
@@ -80,6 +84,28 @@ export default function JoinPage() {
             Email the team
             <span aria-hidden> →</span>
           </a>
+
+          {/* 2. Subscribe to Newsletter (Secondary Action) */}
+          <a
+            href={NEWSLETTER_HREF}
+            className="inline-flex items-center justify-center rounded-full border border-white px-5 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-white/10 focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-[#1a2744]"
+          >
+            Subscribe to newsletter
+          </a>
+
+          {/* 3. Join Slack (Link Style) */}
+          <a 
+            // href={SLACK_HREF}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center justify-center rounded-full border border-white/30 bg-white/5 px-5 py-2.5 text-sm font-medium text-white transition-all hover:bg-white/10 hover:border-white/60 focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-[#1a2744]"
+          >
+            Join Slack
+            <span className="ml-2 rounded bg-white/10 px-1.5 py-0.5 text-[10px] font-bold uppercase tracking-wider text-white/70">
+              Soon
+            </span>
+          </a>
+
         </div>
       </section>
 
