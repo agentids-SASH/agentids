@@ -287,11 +287,11 @@ export function ProjectTimeline() {
                       transition: transition ?? "background 150ms ease",
                     }}
                   />
-                  <span className="text-[11px] font-bold uppercase tracking-[0.16em] text-[#6B6B6B]">
+                  <span className="text-xs font-bold uppercase tracking-[0.16em] text-[#6B6B6B]">
                     {m.dateLabel}
                   </span>
                   <span
-                    className="text-base font-medium text-[#1A1A1A]"
+                    className="text-lg font-medium text-[#1A1A1A]"
                     style={{
                       color: isActive ? "#1A2744" : undefined,
                     }}
@@ -329,7 +329,7 @@ function DateLabel({ column, text }: { column: number; text: string }) {
       className="flex items-end justify-center text-center"
       style={{ gridColumn: column, gridRow: 1, minHeight: 28 }}
     >
-      <span className="text-[11px] font-bold uppercase tracking-[0.16em] text-[#6B6B6B]">
+      <span className="text-[16px] font-bold uppercase tracking-[0.16em] text-[#6B6B6B]">
         {text}
       </span>
     </div>
@@ -409,7 +409,7 @@ function TitleLabel({
         type="button"
         onClick={onClick}
         tabIndex={-1}
-        className="text-sm transition-colors hover:text-[#1A2744]"
+        className="text-lg transition-colors hover:text-[#1A2744]"
         style={{
           color: isActive ? "#1A2744" : "#1A1A1A",
           fontWeight: isActive ? 600 : 500,
@@ -458,7 +458,7 @@ function ExpansionPanel({
       >
         {activeMilestone && (
           <div className="flex flex-col gap-2">
-            <p className="m-0 text-base leading-relaxed text-[#1F2937] sm:text-lg">
+            <p className="m-0 text-lg leading-relaxed text-[#1F2937] sm:text-lg">
               {activeMilestone.description}
             </p>
           </div>
