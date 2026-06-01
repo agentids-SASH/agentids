@@ -53,6 +53,45 @@ export default function DemoPage() {
         </div>
       </section>
 
+      {/* ── Full embedded demo ─────────────────────────────────────── */}
+      <section
+        aria-labelledby="full-demo-heading"
+        className="border-b border-[rgba(26,26,26,0.12)]"
+      >
+        <div className="mx-auto w-full max-w-4xl px-4 py-12 sm:px-6 sm:py-14">
+          <h2
+            id="full-demo-heading"
+            className="text-2xl font-semibold tracking-tight text-[#1a2744] sm:text-3xl"
+          >
+            Technical demo
+          </h2>
+          
+          <br />
+
+          {/* Wrap in Explicit ID for Analytics tracking */}
+          <span id="full-demo-link">
+            <ResourceLink
+                  label="We&apos;re building in public — explore the demo yourself!"
+                  href={fullTechnicalDemo}
+            />
+          </span>
+
+          {/* Large 1x1 Feature Image */}
+          <a 
+            id="full-demo-link" // ← Explicit ID for Analytics tracking
+            href={fullTechnicalDemo}
+            target="_blank"
+            className="mt-8 overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-[0_2px_4px_rgba(15,23,42,0.05),0_12px_28px_rgba(15,23,42,0.06)]"
+          >
+            <img
+              src="/images/home/full-demo-agent-id-testbed.png" 
+              alt="Full Technical Demo Preview"
+              className="aspect-video w-full object-cover transition-transform duration-700 hover:scale-[1.02]"
+            />
+          </a>
+        </div>
+      </section>
+
       {/* ── Walkthrough — videos placed above the fold ─────────────── */}
       <section
         aria-labelledby="walkthrough-heading"
@@ -126,64 +165,7 @@ export default function DemoPage() {
         </div>
       </section>
 
-      {/* ── Full embedded demo ─────────────────────────────────────── */}
-      <section
-        aria-labelledby="full-demo-heading"
-        className="border-b border-[rgba(26,26,26,0.12)]"
-      >
-        <div className="mx-auto w-full max-w-4xl px-4 py-12 sm:px-6 sm:py-14">
-          <h2
-            id="full-demo-heading"
-            className="text-2xl font-semibold tracking-tight text-[#1a2744] sm:text-3xl"
-          >
-            Full demo
-          </h2>
-          
-          <br />
-
-          {/* Wrap in Explicit ID for Analytics tracking */}
-          <span id="full-demo-link">
-            <ResourceLink
-                  label="We&apos;re building in public — explore the demo yourself!"
-                  href={fullTechnicalDemo}
-            />
-          </span>
-
-          {/* Large 1x1 Feature Image */}
-          <a 
-            id="full-demo-link" // ← Explicit ID for Analytics tracking
-            href={fullTechnicalDemo}
-            target="_blank"
-            className="mt-8 overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-[0_2px_4px_rgba(15,23,42,0.05),0_12px_28px_rgba(15,23,42,0.06)]"
-          >
-            <img
-              src="/images/home/full-demo-agent-id-testbed.png" 
-              alt="Full Technical Demo Preview"
-              className="aspect-video w-full object-cover transition-transform duration-700 hover:scale-[1.02]"
-            />
-          </a>
-
-          {/* <PocViewSwitcher className="mt-8" />
-
-          <div className="mx-auto mt-10 max-w-3xl rounded-lg border border-slate-200 bg-white px-4 py-5 text-sm leading-relaxed text-slate-700 sm:px-5">
-            <h3 className="font-semibold text-[#1a2744]">
-              Scenario &amp; presets
-            </h3>
-            <p className="mt-2">
-              The scenario follows a healthcare booking agent:{" "}
-              <strong className="font-medium">MedBot SG</strong> requests
-              patient appointment availability from a polyclinic API. Use
-              the{" "}
-              <strong className="font-medium">Agent ID state</strong>{" "}
-              presets (Full Agent ID, No Deployer Info, No Safety
-              Certification, No Agent ID) in the Consequences view to see
-              which incident response phases succeed or stop entirely —
-              missing credential sections cause hard stops, not gradual
-              degradation.
-            </p>
-          </div> */}
-        </div>
-      </section>
+      
 
       {/* ── Design & Code ─────────────────────────────────────────── */}
       <section
