@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import { AgentStoryCarousel } from "@/components/home/AgentStoryCarousel";
 import { LatestResearch } from "@/components/home/LatestResearch";
 import { Workstreams } from "@/components/home/Workstreams";
@@ -17,6 +18,7 @@ const PRIMARY_STEWARD = siteConfig.stewards[0];
 const PRIMARY_VIDEO = siteConfig.demo.videos[0];
 
 export default function HomePage() {
+  const fullTechnicalDemo = siteConfig.demo.fullTechnicalDemo;
   return (
     <div>
       {/* ── Hero ───────────────────────────────────────────────────── */}
@@ -96,21 +98,39 @@ export default function HomePage() {
               ))}
 
               <p className="mt-2 text-base font-medium text-[#1a2744]">
-                We&apos;re building in public — explore the demo yourself!{" "}
+                We&apos;re building in public — {" "}
                 <Link
                   href="/demo"
                   className="underline decoration-[#ea580c] decoration-2 underline-offset-4 hover:text-[#0f4c5c]"
                 >
-                  Technical Demo
+                  Learn more about the Technical Demo
                 </Link>
               </p>
             </div>
 
-            <DemoVideo
-              video={PRIMARY_VIDEO}
-              hideTitle
-              caption={walkthroughCaption}
-            />
+            <div className="flex flex-col gap-2">
+              <p className="mt-2 text-base font-medium text-[#1a2744]">
+                <Link href={fullTechnicalDemo} className="block">
+                        Explore the demo yourself!
+                </Link>
+              </p>
+
+              <Link href={fullTechnicalDemo} className="block">
+                <Image
+                  src="/images/home/full-demo-agent-id-testbed.png"
+                  alt="Agent ID Testbed demo preview"
+                  width={1200}
+                  height={675}
+                  className="w-full rounded-lg border border-slate-200 shadow-sm transition-opacity hover:opacity-90"
+                />
+              </Link>
+
+              {/* <DemoVideo
+                video={PRIMARY_VIDEO}
+                hideTitle
+                caption={walkthroughCaption}
+              /> */}
+            </div>
           </div>
 
           {/* <PocViewSwitcher className="mt-12" /> */}
