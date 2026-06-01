@@ -16,7 +16,7 @@ export function Workstreams() {
       aria-labelledby="workstreams-heading"
       className="border-b border-slate-200/80 bg-white"
     >
-      <div className="mx-auto w-full max-w-4xl px-4 py-14 sm:px-6 sm:py-16">
+      <div className="mx-auto w-full max-w-6xl px-4 py-14 sm:px-6 sm:py-16">
         <h2
           id="workstreams-heading"
           className="text-3xl font-semibold tracking-tight text-[#1a2744] sm:text-4xl"

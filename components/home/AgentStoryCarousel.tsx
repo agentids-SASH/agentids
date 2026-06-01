@@ -141,10 +141,13 @@ export function AgentStoryCarousel() {
         color: PALETTE.ink,
         borderTop: `1px solid ${PALETTE.border}`,
         borderBottom: `1px solid ${PALETTE.border}`,
-        padding: "clamp(40px, 7vw, 72px) clamp(16px, 5vw, 48px)",
+        paddingTop: "clamp(20px, 3vw, 32px)",
+        paddingBottom: "clamp(36px, 6vw, 64px)",
+        paddingLeft: "clamp(16px, 5vw, 48px)",
+        paddingRight: "clamp(16px, 5vw, 48px)",
       }}
     >
-      <div className="mx-auto grid w-full max-w-6xl grid-cols-1 gap-8 md:grid-cols-[minmax(0,1fr)_minmax(0,2fr)] md:items-start md:gap-10 lg:gap-12">
+      <div className="mx-auto grid w-full max-w-[84rem] grid-cols-1 gap-8 md:grid-cols-[minmax(0,1fr)_minmax(0,2fr)] md:items-start md:gap-10 lg:gap-14">
         {/* ── Left: static problem copy ────────────────────────────── */}
         <div className="flex min-w-0 flex-col gap-6">
           <header

@@ -30,7 +30,7 @@ export default function HomePage() {
         />
 
         <div
-          className={`${homeContent} flex flex-col items-center py-14 text-center sm:py-20`}
+          className={`${homeContent} flex flex-col items-center py-4 text-center sm:py-8`}
         >
           <h1 className="text-4xl font-normal tracking-tight text-white sm:text-5xl md:text-6xl">
             {siteConfig.title}
