@@ -99,6 +99,7 @@ export default function HomePage() {
 
               <p className="mt-2 text-base font-medium text-[#1a2744]">
                 We&apos;re building in public — {" "}
+                {/* TODO from ZS: "building in public" feels like we're building the actual thing instead of just specifying the functional requirements with animations. */}
                 <Link
                   href="/demo"
                   className="underline decoration-[#ea580c] decoration-2 underline-offset-4 hover:text-[#0f4c5c]"

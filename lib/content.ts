@@ -32,6 +32,8 @@ export const workstreamsLede = [
   "We want to advance secure and robust agent IDs globally. We define technical protocols, build proof of concepts and conduct policy research.",
   "Our edge? We engage a diverse set of stakeholders to develop truly open agent ID solutions, interoperable with existing private and public identity infrastructure. We work directly with regulators to create the governance processes necessary for broad adoption.",
 ] as const;
+/* TODO from ZS: "build proof of concepts" feels like we're building the actual thing instead of just specifying the functional requirements with animations. 
+* same for "develop truly open agent ID solutions" */
 
 /* ── Landing + /demo: shared description of the technical demo ──────── */
 
@@ -39,6 +41,7 @@ export const demoIntroParagraphs = [
   "The demo is an interactive implementation of an agent ID protocol. It details and documents the specific steps each entity takes to allow an AI agent to securely access a web service on behalf of its deployer.",
   "Currently the demo follows a scripted set of steps that show how each component of the agent ID is assembled and used. Next, we will bring each entity to life, letting a viewer inspect network requests and server code as the process runs in real time.",
 ] as const;
+/* TODO from ZS: The last sentence above feels like we're building the actual thing instead of just specifying the functional requirements with animations. */
 
 /* ── /demo: short caption that accompanies the embedded walkthrough ─── */
 
