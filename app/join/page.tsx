@@ -96,7 +96,7 @@ export default function JoinPage() {
             Subscribe to newsletter
           </a>
 
-          {/* 3. Join Slack (Link Style) */}
+          {/* 3. Join Slack (Link Style)
           <a 
             // href={SLACK_HREF}
             target="_blank"
@@ -107,7 +107,7 @@ export default function JoinPage() {
             <span className="ml-2 rounded bg-white/10 px-1.5 py-0.5 text-[10px] font-bold uppercase tracking-wider text-white/70">
               Soon
             </span>
-          </a>
+          </a> */}
 
         </div>
       </section>
