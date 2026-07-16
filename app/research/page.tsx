@@ -5,7 +5,7 @@ import { siteConfig, type ResearchOutput } from "@/lib/site";
 export const metadata: Metadata = {
   title: "Research",
   description:
-    "Policy memos and research outputs from the Agent IDs community.",
+    "Policy memos and applied research outputs.",
 };
 
 /**

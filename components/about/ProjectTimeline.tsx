@@ -42,7 +42,7 @@ type Milestone = {
   id: string;
   dateLabel: string;
   title: string;
-  description: string;
+  description: readonly string[];
   completed: boolean;
 };
 
@@ -313,9 +313,11 @@ export function ProjectTimeline() {
                     className="mb-3 ml-0 mt-1 rounded-md border border-[rgba(26,26,26,0.12)] bg-white p-4 shadow-[0_1px_3px_rgba(15,23,42,0.06)]"
                     style={{ borderLeft: "3px solid #1A2744" }}
                   >
-                    <p className="m-0 text-[15px] leading-relaxed text-[#1F2937]">
-                      {m.description}
-                    </p>
+                    <ul className="m-0 flex list-disc flex-col gap-1 pl-5 text-[15px] leading-relaxed text-[#1F2937]">
+                      {m.description.map((point) => (
+                        <li key={point}>{point}</li>
+                      ))}
+                    </ul>
                   </div>
                 )}
               </li>
@@ -470,7 +472,7 @@ function ExpansionPanel({
   // we still toggle aria-hidden when collapsed for clarity.
   const wrapperStyle: CSSProperties = {
     overflow: "hidden",
-    maxHeight: isOpen ? 320 : 0,
+    maxHeight: isOpen ? 400 : 0,
     opacity: isOpen ? 1 : 0,
     transition: reduced
       ? "none"
@@ -488,11 +490,11 @@ function ExpansionPanel({
         style={{ borderLeft: "3px solid #1A2744" }}
       >
         {activeMilestone && (
-          <div className="flex flex-col gap-2">
-            <p className="m-0 text-lg leading-relaxed text-[#1F2937] sm:text-lg">
-              {activeMilestone.description}
-            </p>
-          </div>
+          <ul className="m-0 flex list-disc flex-col gap-2 pl-6 text-lg leading-relaxed text-[#1F2937]">
+            {activeMilestone.description.map((point) => (
+              <li key={point}>{point}</li>
+            ))}
+          </ul>
         )}
       </div>
     </div>

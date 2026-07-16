@@ -29,7 +29,7 @@ export const bankQuestions = [
 /* ── Landing: Workstreams paragraph (replaces former 3-card grid) ───── */
 
 export const workstreamsLede =
-  "We want to advance secure and robust agent IDs globally. We define technical protocols, build proof of concepts, and conduct policy research. Our edge? We are:";
+  "We want to advance secure and robust agent infrastructure globally. We define technical protocols, build proof of concepts, and conduct policy research. Our edge? We are:";
 
 export const workstreamsEdges = [
   "Neutral coalition builders, engaging industry, governments, and researchers between East and West.",
@@ -80,7 +80,7 @@ export const demoFutureUseCases = [
 /* ── /about: project intro body paragraph ───────────────────────────── */
 
 export const aboutIntroParagraph =
-  "We want to advance secure and robust agent IDs globally: truly open, interoperable and safe. We define technical protocols, build proof of concepts and conduct policy research.";
+  "We want to advance secure and robust agent infrastructure globally: truly open, interoperable and safe. We define technical protocols, build proof of concepts and conduct policy research.";
 
 /* ── /about: project timeline milestones (Q1–Q4 2026) ───────────────── */
 
@@ -89,32 +89,44 @@ export const aboutMilestones = [
     id: "q1-2026",
     dateLabel: "Q1 2026",
     title: "Foundations",
-    description:
-      "Published foundational policy memo. Launched applied pilot in partnership with Singapore AISI.",
+    description: [
+      "Published foundational policy memo.",
+      "Launched applied pilot in partnership with Singapore AISI.",
+    ],
     completed: true,
   },
   {
     id: "q2-2026",
     dateLabel: "Q2 2026",
     title: "Demo & partnerships",
-    description:
-      "Develop a complete technical demo for an illustrative use case. Workshops at ISE & ATX in Singapore. Onboarded Korea AISI as core partner.",
+    description: [
+      "Develop a complete technical demo for an illustrative use case.",
+      "Workshops at ISE & ATX in Singapore.",
+      "Onboarded Korea AISI as core partner.",
+    ],
     completed: true,
   },
   {
     id: "q3-2026",
     dateLabel: "Q3 2026",
     title: "Implementation & policy",
-    description:
-      "Full implemention behind the technical demo, easing adoption. Additional research outputs, e.g. on agent emergency shutdowns. Workshops with industry leaders, including frontier AI developers, agent providers and enterprises. Expanding core project partners.",
+    description: [
+      "Full implementation behind the technical demo, easing adoption.",
+      "Additional research outputs, e.g. on agent emergency shutdowns.",
+      "Workshops with industry leaders, including frontier AI developers, agent providers and enterprises.",
+      "Expanding core project partners.",
+    ],
     completed: false,
   },
   {
     id: "q4-2026",
     dateLabel: "Q4 2026",
     title: "Integration & adoption",
-    description:
-      "Fully functional protocol for agent IDs with integrations into existing tools and frameworks. Advocating for adoption of agent IDs by industry and government stakeholders. Advancing the protocol's recognition in key global fora.",
+    description: [
+      "Fully functional protocol for agent IDs with integrations into existing tools and frameworks.",
+      "Advocating for adoption of agent IDs by industry and government stakeholders.",
+      "Advancing the protocol's recognition in key global fora.",
+    ],
     completed: false,
   },
 ] as const;
@@ -122,7 +134,7 @@ export const aboutMilestones = [
 /* ── /join: hero lede + "How to contribute" body ────────────────────── */
 
 export const joinHeroLede =
-  "We'd love to shape the future of agent IDs with you—whether you're a researcher, a regulator, an AI developer, an agent deployer, or a service bracing for agents to arrive.";
+  "We'd love to shape the future of agent ID protocols with you—whether you're a researcher, a regulator, an AI developer, an agent deployer, or a service bracing for agents to arrive.";
 
 export const joinHowToContribute =
   "We're building agent ID protocols in the open. Whether you want to contribute code, discuss adjacent work on agent governance, or share challenges you face managing agent infrastructure in practice — we'd like to hear from you.";
