@@ -324,6 +324,23 @@ export const siteConfig = {
       photo: "/images/team/Lance-Jabr.jpg",
       linkedinUrl: "https://www.linkedin.com/in/lancejabr/",
     },
+    {
+      id: "zeshen",
+      name: "Ze Shen Chin",
+      title: "Researcher",
+      bio: "Ze Shen works on AI agent infrastructure at SASH and co-leads AI Standards Lab, while serving as a Research Affiliate with the Oxford Martin AI Governance Initiative. He has three years of experience in AI governance, specializing in EU AI policy and frontier AI risk management. He previously spent over a decade as a reservoir engineer in the oil and gas industry.",
+      photo: "/images/team/Ze-Shen-Chin.jpg",
+      linkedinUrl: "https://www.linkedin.com/in/chinzeshen/",
+    },
+    {
+      id: "manav",
+      name: "Manav Chouhan",
+      title: "Research Engineer",
+      bio: "Manav is working on research and implementation of AI Agent infrastructure at SASH. He brings over 5 years of experience as an AI and Software Engineer, having previously worked at AI Singapore and PTC Software, with experience spanning LLM infrastructure, multi-agent systems, and security protocols. He holds a Master of Computing in AI from the National University of Singapore.",
+      photo: "/images/team/Manav-Chouhan.jpg",
+      linkedinUrl: "https://www.linkedin.com/in/manavchouhan115/",
+    },
+    
   ] satisfies readonly TeamMember[],
 
   /**
