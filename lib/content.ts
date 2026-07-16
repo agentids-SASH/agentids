@@ -28,15 +28,19 @@ export const bankQuestions = [
 
 /* ── Landing: Workstreams paragraph (replaces former 3-card grid) ───── */
 
-export const workstreamsLede = [
-  "We want to advance secure and robust agent IDs globally. We define technical protocols, build proof of concepts and conduct policy research.",
-  "Our edge? We engage a diverse set of stakeholders to develop truly open agent ID solutions, interoperable with existing private and public identity infrastructure. We work directly with regulators to create the governance processes necessary for broad adoption.",
+export const workstreamsLede =
+  "We want to advance secure and robust agent IDs globally. We define technical protocols, build proof of concepts, and conduct policy research. Our edge? We are:";
+
+export const workstreamsEdges = [
+  "Neutral coalition builders, engaging industry, governments, and researchers between East and West.",
+  "Architects of solutions that confront hard questions about accountability and trust across the AI agent supply chain.",
+  "Pragmatic advisors that configure solutions to different technical and policy contexts.",
 ] as const;
 
 /* ── Landing + /demo: shared description of the technical demo ──────── */
 
 export const demoIntroParagraphs = [
-  "The demo is an interactive implementation of an agent ID protocol. It details and documents the specific steps each entity takes to allow an AI agent to securely access a web service on behalf of its deployer.",
+  "The demo is an interactive visualization of an agent ID protocol. It details and documents the specific steps each entity takes to allow an AI agent to securely access a web service on behalf of its deployer.",
   "Currently the demo follows a scripted set of steps that show how each component of the agent ID is assembled and used. Next, we will bring each entity to life, letting a viewer inspect network requests and server code as the process runs in real time.",
 ] as const;
 

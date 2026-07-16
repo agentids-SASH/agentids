@@ -1,4 +1,4 @@
-import { workstreamsLede } from "@/lib/content";
+import { workstreamsLede, workstreamsEdges } from "@/lib/content";
 
 /**
  * Workstreams
@@ -28,9 +28,12 @@ export function Workstreams() {
           aria-hidden
         />
         <div className="mt-6 flex flex-col gap-4 text-base leading-relaxed text-slate-700">
-          {workstreamsLede.map((para) => (
-            <p key={para}>{para}</p>
-          ))}
+          <p>{workstreamsLede}</p>
+          <ul className="flex flex-col gap-3 pl-5 list-disc marker:text-[#ea580c]">
+            {workstreamsEdges.map((edge) => (
+              <li key={edge}>{edge}</li>
+            ))}
+          </ul>
         </div>
       </div>
     </section>

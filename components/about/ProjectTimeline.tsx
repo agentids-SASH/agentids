@@ -76,7 +76,7 @@ function getPrefersReducedMotionServer(): boolean {
 // ─── Component ──────────────────────────────────────────────────────────────
 
 export function ProjectTimeline() {
-  const [activeId, setActiveId] = useState<string | null>(MILESTONES[0]?.id ?? null);
+  const [activeId, setActiveId] = useState<string | null>(MILESTONES[2]?.id ?? null);
   const reduced = useReducedMotion();
   const baseId = useId();
 
