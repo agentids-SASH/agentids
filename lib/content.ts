@@ -91,6 +91,7 @@ export const aboutMilestones = [
     title: "Foundations",
     description:
       "Published foundational policy memo. Launched applied pilot in partnership with Singapore AISI.",
+    completed: true,
   },
   {
     id: "q2-2026",
@@ -98,20 +99,23 @@ export const aboutMilestones = [
     title: "Demo & partnerships",
     description:
       "Develop a complete technical demo for an illustrative use case. Workshops at ISE & ATX in Singapore. Onboarded Korea AISI as core partner.",
+    completed: true,
   },
   {
     id: "q3-2026",
     dateLabel: "Q3 2026",
     title: "Implementation & policy",
     description:
-      "Fully implement cryptography and server code for the technical demo, enabling simulations and tabletop exercises. Additional research outputs, e.g. on agent emergency shutdowns. Workshops with industry leaders, including frontier AI developers, agent providers and enterprises. Expanding core project partners.",
+      "Full implemention behind the technical demo, easing adoption. Additional research outputs, e.g. on agent emergency shutdowns. Workshops with industry leaders, including frontier AI developers, agent providers and enterprises. Expanding core project partners.",
+    completed: false,
   },
   {
     id: "q4-2026",
     dateLabel: "Q4 2026",
-    title: "Testbed & adoption",
+    title: "Integration & adoption",
     description:
-      "Fully functional testbed for configuring, observing, and simulating AI agents. Perpetuating project governance, advancing the protocol's recognition in key global fora.",
+      "Fully functional protocol for agent IDs with integrations into existing tools and frameworks. Advocating for adoption of agent IDs by industry and government stakeholders. Advancing the protocol's recognition in key global fora.",
+    completed: false,
   },
 ] as const;
 

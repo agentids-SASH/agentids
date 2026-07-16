@@ -43,6 +43,7 @@ type Milestone = {
   dateLabel: string;
   title: string;
   description: string;
+  completed: boolean;
 };
 
 const MILESTONES: readonly Milestone[] = aboutMilestones;
@@ -206,12 +207,13 @@ export function ProjectTimeline() {
                   key={`m-${m.id}`}
                   column={i + 1}
                   isActive={isActive}
+                  completed={m.completed}
                   transition={transition}
                   onClick={() => handleClick(m.id)}
                   onKeyDown={onHorizontalKeyDown}
                   tabId={tabId(m.id, "h")}
                   panelId={horizontalPanelId}
-                  ariaLabel={`Milestone ${i + 1} of ${total}: ${m.title}, ${m.dateLabel}`}
+                  ariaLabel={`Milestone ${i + 1} of ${total}: ${m.title}, ${m.dateLabel}${m.completed ? ", completed" : ""}`}
                 />
               );
             })}
@@ -277,7 +279,7 @@ export function ProjectTimeline() {
                 >
                   <span
                     aria-hidden
-                    className="absolute left-0 top-[18px]"
+                    className="absolute left-0 top-[18px] flex items-center justify-center"
                     style={{
                       width: 18,
                       height: 18,
@@ -286,7 +288,11 @@ export function ProjectTimeline() {
                       background: isActive ? "#1A2744" : "#F5F0E8",
                       transition: transition ?? "background 150ms ease",
                     }}
-                  />
+                  >
+                    {m.completed && (
+                      <CheckIcon color={isActive ? "#F5F0E8" : "#1A2744"} size={11} />
+                    )}
+                  </span>
                   <span className="text-xs font-bold uppercase tracking-[0.16em] text-[#6B6B6B]">
                     {m.dateLabel}
                   </span>
@@ -339,6 +345,7 @@ function DateLabel({ column, text }: { column: number; text: string }) {
 function MarkerCell({
   column,
   isActive,
+  completed,
   transition,
   onClick,
   onKeyDown,
@@ -348,6 +355,7 @@ function MarkerCell({
 }: {
   column: number;
   isActive: boolean;
+  completed: boolean;
   transition: string | undefined;
   onClick: () => void;
   onKeyDown: (e: KeyboardEvent<HTMLButtonElement>) => void;
@@ -374,6 +382,7 @@ function MarkerCell({
       >
         <span
           aria-hidden
+          className="relative flex items-center justify-center"
           style={{
             width: 30,
             height: 30,
@@ -381,11 +390,33 @@ function MarkerCell({
             border: "1px solid #1A2744",
             background: isActive ? "#1A2744" : "#F5F0E8",
             transition: transition ?? "background 150ms ease",
-            display: "block",
           }}
-        />
+        >
+          {completed && <CheckIcon color={isActive ? "#F5F0E8" : "#1A2744"} />}
+        </span>
       </button>
     </div>
+  );
+}
+
+function CheckIcon({ color, size = 16 }: { color: string; size?: number }) {
+  return (
+    <svg
+      aria-hidden
+      width={size}
+      height={size}
+      viewBox="0 0 16 16"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        d="M3 8.5L6.2 11.5L13 4.5"
+        stroke={color}
+        strokeWidth={2}
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+    </svg>
   );
 }
 
