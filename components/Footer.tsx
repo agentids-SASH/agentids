@@ -63,7 +63,7 @@ export function Footer() {
           {/* ── Legal ────────────────────────────────────────────── */}
           <div className="flex flex-col gap-3 md:items-end md:text-right">
             <p className="text-xs text-slate-500">
-              © {year} SASH Agent IDs
+              © {year} SASH AgentID
             </p>
           </div>
         </div>

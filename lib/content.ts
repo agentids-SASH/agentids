@@ -118,7 +118,7 @@ export const aboutMilestones = [
 /* ── /join: hero lede + "How to contribute" body ────────────────────── */
 
 export const joinHeroLede =
-  "We'd love to shape the future of agent IDs with you—whether you're a researcher, a regulator, an AI developer or an agent deployer.";
+  "We'd love to shape the future of agent IDs with you—whether you're a researcher, a regulator, an AI developer, or an agent deployer.";
 
 export const joinHowToContribute =
   "We're building agent ID protocols in the open. Whether you want to contribute code, discuss adjacent work on agent governance, or share challenges you face managing agent infrastructure in practice — we'd like to hear from you.";

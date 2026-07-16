@@ -13,11 +13,11 @@ import {
 export const metadata: Metadata = {
   title: "Technical demo",
   description:
-    "Agent ID Technical Demo — interactive explanation, demonstration, and reference implementation of a secure agent ID protocol.",
+    "AgentID Technical Demo — interactive explanation, demonstration, and reference implementation of a secure agent ID protocol.",
 };
 
 /**
- * /demo — Agent ID Technical Demo
+ * /demo — AgentID Technical Demo
  *
  * Page order is deliberate (per Sam's review note: "ensure the
  * walkthrough is visible from the opening view"):
@@ -43,7 +43,7 @@ export default function DemoPage() {
       <section className="border-b border-[rgba(26,26,26,0.12)]">
         <div className="mx-auto w-full max-w-4xl px-4 py-12 sm:px-6 sm:py-16">
           <h1 className="text-3xl font-semibold tracking-tight text-[#1a2744] sm:text-4xl">
-            Agent ID Technical Demo
+            AgentID Technical Demo
           </h1>
           <div className="mt-4 flex flex-col gap-4 text-base leading-relaxed text-slate-700 sm:text-lg">
             {demoIntroParagraphs.map((para) => (

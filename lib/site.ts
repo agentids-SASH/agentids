@@ -107,8 +107,8 @@ export type TeamMember = {
 /* ────────────────────────────────────────────────────────────────────── */
 
 export const siteConfig = {
-  name: "Agent IDs",
-  title: "Agent IDs",
+  name: "AgentID",
+  title: "AgentID",
 
   /**
    * Mission statement. Reused across hero, footer, About intro, and
@@ -200,15 +200,6 @@ export const siteConfig = {
   slackUrl: "",
 
   /**
-   * GitHub URL kept for backwards compatibility (referenced by older
-   * components and link metadata). The hero no longer surfaces a "View
-   * on GitHub" link per the spec.
-   */
-  githubUrl:
-    process.env.NEXT_PUBLIC_GITHUB_URL ??
-    "https://github.com/ady-bhai/agent-ID-poc-SG",
-
-  /**
    * Technical demo configuration. Empty `youtubeId` strings render
    * placeholder cards; empty repo / design-doc URLs render disabled
    * "TBA" badges. Filling these in is the launch checklist.
@@ -226,7 +217,7 @@ export const siteConfig = {
     videos: [
       {
         id: "v1",
-        title: "Navigating the agentID Technical Demo",
+        title: "Navigating the AgentID Technical Demo",
         youtubeId: "https://youtu.be/PS2of3azpHo",
         videoId: "PS2of3azpHo"
       },
@@ -258,7 +249,7 @@ export const siteConfig = {
         kind: "Policy memo",
         title: "Designing Agent IDs",
         summary:
-          "A policy memo mapping the design space for agent ID systems: functions, existing protocols, private incentives, and ten central design questions",
+          "A policy memo mapping the design space for agent IDs: functions, existing protocols, private incentives, and ten central design questions",
         href: "/memo",
         status: "published",
       },
@@ -311,7 +302,7 @@ export const siteConfig = {
     },
     {
       id: "zac",
-      name: "Zac",
+      name: "Zac Richardson",
       title: "Fellow",
       bio: "Zac joined SASH as a Winter Fellow at Centre for the Governance of AI, where he worked on projects related to AI risk management and verification. Previously he worked in program management and headhunting for 80,000 Hours. He holds a master's degree in social psychology from LSE.",
       photo: "/images/team/Zac-Richardson.jpg",
