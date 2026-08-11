@@ -197,6 +197,8 @@ export default function DemoPage() {
           </ul>
         </div>
       </section>
+      {/* TODO from ZS: I initially read this as we're providing the code of the actual prototype instead of the code for the web page and the animation.
+      Not sure if there's any value of providing the code in this case? */}
 
       {/* ── Quiet "back home" link ─────────────────────────────────── */}
       <div className="mx-auto w-full max-w-4xl px-4 py-8 text-center sm:px-6">

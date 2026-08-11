@@ -183,6 +183,9 @@ export default function MemoPage() {
               of risks that external agents can pose while still benefiting
               from the improved efficiency reliable agents can provide.
             </p>
+            {/* TODO from ZS: the above paragraph describes two incidents, none of which will be solved by agent IDs.
+            One possible way around is to quote the examples, but in a separate paragraph say how agents might do much more in the future,
+             and that some infrastructure for IDs might mitigate those future risks. */}
 
             <p>
               Agent IDs are often linked to one or several of the following

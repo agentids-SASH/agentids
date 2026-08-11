@@ -116,6 +116,7 @@ export const siteConfig = {
    */
   mission:
     "An open research community building the trust layer for AI agents.",
+    /* TODO from ZS: "building the trust layer" feels like we're building the actual thing instead of just specifying the functional requirements with animations. */
 
   /**
    * Slightly longer description used in metadata + the /about page.
