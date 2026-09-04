@@ -4,9 +4,9 @@ import Link from "next/link";
 import { MemoToc, MemoTocMobile, type MemoTocItem } from "@/components/memo/MemoToc";
 
 export const metadata: Metadata = {
-  title: "Key Ingredients of Robust AI Agent IDs — Research note",
+  title: "Key Ingredients of AI Agent IDs — Research note",
   description:
-    "A Singapore AI Safety Hub (SASH) note on what a robust AI agent ID protocol should do: the goals it serves, the functions behind those goals, and the protocols and products that already exist.",
+    "A Singapore AI Safety Hub (SASH) post on the goals of AI agent IDs, the functions that serve those goals, and the protocols, platforms and standards work that already exist.",
 };
 
 /**
@@ -14,12 +14,18 @@ export const metadata: Metadata = {
  *  - Publication date below is a placeholder.
  *  - Eyebrow reads "Research note"; switch to "Policy memo" if this
  *    belongs in the same series as /memo.
- *  - There is no PDF for this piece yet. If one is added, mirror the
+ *  - There is no PDF for this piece. If one is added, mirror the
  *    `PDF_HREF` / `withPublicBasePath` pattern from the memo page and
  *    re-add the masthead + footer download buttons.
  */
-const PUBLISHED = { iso: "2026-09-03", label: "3 September 2026" };
+const PUBLISHED = { iso: "2026-09-04", label: "4 September 2026" };
 
+/**
+ * "Notes" is deliberately absent from the rail: it is footnote apparatus
+ * rather than one of the post's own headings, matching the memo page's
+ * rule that TOC labels mirror the document's headings. Add
+ * `{ id: "notes", label: "Notes", level: 1 }` if you want it listed.
+ */
 const TOC_ITEMS: readonly MemoTocItem[] = [
   { id: "introduction", label: "Introduction", level: 1 },
   { id: "goals", label: "Goals of Agent IDs", level: 1 },
@@ -29,16 +35,41 @@ const TOC_ITEMS: readonly MemoTocItem[] = [
 ];
 
 /**
- * The source document is heavily hyperlinked, unlike the memo page.
- * Small local wrapper so every outbound citation gets the same styling
- * and rel/target treatment. Inline it if the house style prefers plain
- * `<a>` tags.
+ * The source post is heavily hyperlinked, unlike the memo page. Small
+ * local wrapper so every outbound link gets the same styling and
+ * rel/target treatment. Inline it if house style prefers plain `<a>`.
  */
 function Ext({ href, children }: { href: string; children: ReactNode }) {
   return (
     <a href={href} className="memo-link" target="_blank" rel="noreferrer">
       {children}
     </a>
+  );
+}
+
+/** Footnote reference marker. Pairs with <FootnoteItem n={...}>. */
+function FnRef({ n }: { n: number }) {
+  return (
+    <sup id={`fnref-${n}`} className="scroll-mt-24 text-[11px]">
+      <a href={`#fn-${n}`} className="memo-link" aria-label={`Footnote ${n}`}>
+        {n}
+      </a>
+    </sup>
+  );
+}
+
+function FootnoteItem({ n, children }: { n: number; children: ReactNode }) {
+  return (
+    <li id={`fn-${n}`} className="scroll-mt-24">
+      {children}{" "}
+      <a
+        href={`#fnref-${n}`}
+        className="memo-link"
+        aria-label={`Back to reference ${n}`}
+      >
+        ↩
+      </a>
+    </li>
   );
 }
 
@@ -69,7 +100,7 @@ export default function AgentIdIngredientsPage() {
               Research note
             </p>
             <h1 className="mt-4 text-4xl font-semibold tracking-tight text-[#1a2744] sm:text-[44px] sm:leading-[1.1]">
-              Key Ingredients of Robust AI Agent IDs
+              Key Ingredients of AI Agent IDs
             </h1>
             <p className="mt-4 text-sm text-slate-600">
               <time dateTime={PUBLISHED.iso}>{PUBLISHED.label}</time>
@@ -87,55 +118,52 @@ export default function AgentIdIngredientsPage() {
             </h2>
 
             <p>
-              AI agents are increasingly ubiquitous (
+              AI agents are{" "}
               <Ext href="https://arxiv.org/abs/2602.17753">
-                Staufer et al., 2026
+                increasingly ubiquitous
               </Ext>
-              ), yet they rarely present information about the construction and
+              , yet they rarely present information about the construction and
               origins of the agent, and why they should be trusted.
             </p>
 
             <p>
-              Consider the example of OpenAI&rsquo;s agent&rsquo;s intrusion
-              into the HuggingFace platform. On 16th July 2026, HuggingFace
-              disclosed a security incident where unauthorized access to a
-              limited set of internal datasets and to several credentials were
-              identified (
+              Consider the example of OpenAI agents hacking into Hugging
+              Face&rsquo;s systems. On 16th July 2026, Hugging Face{" "}
               <Ext href="https://huggingface.co/blog/security-incident-july-2026">
-                HuggingFace, 2026
-              </Ext>
-              ). However, five days would pass before OpenAI announced that the
-              incident was driven by their models (
+                disclosed
+              </Ext>{" "}
+              a security incident where unauthorized access to a limited set of
+              internal datasets and to several credentials was identified.
+              However, five days would pass before OpenAI{" "}
               <Ext href="https://openai.com/index/hugging-face-model-evaluation-security-incident/">
-                OpenAI, 2026
-              </Ext>
-              ). At the time of HuggingFace&rsquo;s announcement, they knew that
-              the campaign was run by an autonomous agent framework, but did not
-              know which LLM was used (
-              <Ext href="https://huggingface.co/blog/security-incident-july-2026">
-                HuggingFace, 2026
-              </Ext>
-              ). Here, we see a gap between seeing the action an agent is taking
-              but not being able to identify the agent and its operator.
+                announced
+              </Ext>{" "}
+              that the incident was driven by their models. At the time of
+              Hugging Face&rsquo;s announcement, they knew that the campaign was
+              run by an autonomous agent framework, but did not know which LLM
+              was used. Here, we see a gap between seeing the action an agent is
+              taking but not being able to identify the agent and its operator.
             </p>
 
             <p>
-              A robust AI agent identification (ID) protocol aims to help with
-              mitigating risks related to such cases. While there are many
-              industry solutions for agent IDs, they primarily address the
-              functionality of agents and the technical needs of agent providers
-              and deployers. An agent ID protocol can additionally address risks
-              that affect other entities who are not directly involved in
-              creating or operating the agent, as the ID can include
-              transparency into how the agent was built, information to ensure
-              accountability across all the actors involved, and a plan for what
-              to do when something goes wrong with the agent.
+              Agent IDs aim to mitigate risks similar to such cases.
+              <FnRef n={1} /> While there are many industry solutions for agent
+              IDs, they primarily address the functionality of agents and the
+              technical needs of agent providers and deployers. Robust agent IDs
+              can additionally address risks that affect other entities who are
+              not directly involved in creating or operating the agent, as the
+              ID can include information that provides transparency into how the
+              agent was built, information to ensure accountability across all
+              the actors involved, and a plan for what to do when something goes
+              wrong with the agent.
             </p>
 
             <p>
-              This document outlines the goals of agent IDs, examines some
-              functions that contribute to the goals, and briefly lays out some
-              components of protocols that are relevant.
+              This post sets the stage for forthcoming research comparing
+              features and functionality of different proposals for agent
+              identity. We will describe the high level goals of agent IDs,
+              examine some functions that contribute to the goals, and provide
+              several examples of protocols implementing those functions.
             </p>
           </section>
 
@@ -148,7 +176,8 @@ export default function AgentIdIngredientsPage() {
             <p>
               We use the term AI agent to mean the whole technical system that
               uses an LLM to turn a human or machine input into actions in the
-              digital world. Some key actors in this system are:
+              digital world. Some key actors
+              <FnRef n={2} /> in this system are:
             </p>
 
             <ul className="memo-list">
@@ -159,7 +188,7 @@ export default function AgentIdIngredientsPage() {
               <li>
                 The <strong>agent provider</strong> who provides the agent
                 scaffold, which is used to manage models, data sources, and
-                tools, and specifies how the agent takes actions.
+                tools, and specifies how the agent takes actions
               </li>
               <li>
                 The <strong>model provider</strong> who hosts the LLM that
@@ -187,14 +216,14 @@ export default function AgentIdIngredientsPage() {
               or provide additional information to the service to inform its
               decision to allow or reject a request. The table below summarizes
               the primary goals that an agent&rsquo;s ID can support, along with
-              the specific functions that support the outcome:
+              the specific functions that support the outcome.
             </p>
 
             <figure className="memo-table">
               <figcaption className="memo-table__caption">
-                <strong>Table 1:</strong> Goals of an AI agent ID protocol,
-                alongside the functions required to achieve them. Functions are
-                further described in the{" "}
+                <strong>Table 1:</strong> Goals of agent IDs, alongside the
+                functions required to achieve them. The functions are described
+                in more detail in the{" "}
                 <a href="#appendix" className="memo-link">
                   Appendix
                 </a>
@@ -219,13 +248,14 @@ export default function AgentIdIngredientsPage() {
                       <td>
                         The deployer of an agent communicates the intended
                         outcome to the agent through a prompt and other
-                        configurations or settings. The ID carries this
-                        information to the service. The service can compare the
-                        actions an agent attempts to take against this intended
-                        scope.
+                        configurations. The agent scaffold sends relevant
+                        requests to services, alongside information on the IDs.
+                        The service can compare the actions an agent attempts to
+                        take against the allowed scope.
                       </td>
                       <td>
                         <p>Identification</p>
+                        <p>Credentialing</p>
                         <p>Authentication</p>
                         <p>Authorization</p>
                         <p>Delegation</p>
@@ -242,45 +272,41 @@ export default function AgentIdIngredientsPage() {
                       </td>
                       <td>
                         <p>Identification</p>
-                        <p>Continuous Trust &amp; Remediation</p>
+                        <p>Continuous Monitoring</p>
                         <p>Provisioning &amp; Lifecycle</p>
-                      </td>
-                    </tr>
-                    <tr>
-                      <th scope="row">Transparency</th>
-                      <td>
-                        Multiple actors contribute to an AI agent, as listed
-                        above. The ID can provide information about each actor
-                        such as the model name of the LLM powering the agent or
-                        the name of the provider running the agent.
-                      </td>
-                      {/*
-                        TODO(SASH): verify. In the source document the
-                        Accountability row has an empty "Functions" cell,
-                        which reads as a vertical merge with Transparency.
-                        Rendered here as rowSpan={2}. If Accountability is
-                        meant to have its own function list, split this cell.
-                      */}
-                      <td rowSpan={2}>
-                        <p>Identification</p>
-                        <p>Credentialing</p>
-                        <p>Attestation &amp; Provenance</p>
                         <p>Observability &amp; Logging</p>
                       </td>
                     </tr>
                     <tr>
                       <th scope="row">Accountability</th>
                       <td>
-                        The different actors within the AI agent play unique
-                        roles that contribute to the agent&rsquo;s functionality
-                        and risks. The ID can provide evidence about what each
-                        party does along the way.
+                        Multiple actors contribute to an AI agent, and they play
+                        unique roles that contribute to the agent&rsquo;s
+                        functionality and risks. The ID can provide information
+                        about each actor such as the model name of the LLM
+                        powering the agent or the name of the provider running
+                        the agent.
+                      </td>
+                      <td>
+                        <p>Identification</p>
+                        <p>Credentialing</p>
+                        <p>Attestation &amp; Provenance</p>
+                        <p>Observability &amp; Logging</p>
                       </td>
                     </tr>
                   </tbody>
                 </table>
               </div>
             </figure>
+
+            <p>
+              Ultimately, agent IDs achieve these goals by enabling{" "}
+              <strong>transparency</strong> across the ecosystem. Access control
+              can only be enforced by knowing who is behind the agent, incidents
+              can only be responded to if those able to take actions are
+              identified, and actors can only be held accountable by knowing who
+              provided the model or the agent scaffold.
+            </p>
           </section>
 
           {/* ── What already exists ───────────────────────────────────── */}
@@ -290,19 +316,20 @@ export default function AgentIdIngredientsPage() {
             </h2>
 
             <p>
-              Here, we briefly discuss various parts of a solution that either
-              already exist or are actively being developed. These include
-              narrow building blocks we refer to as &ldquo;primitives&rdquo;
-              that implement specific functions, protocols that describe how
-              agents communicate, platforms and products for managing agents, to
-              standards work that aims at something more comprehensive.
+              We now briefly discuss various parts of a solution that either
+              already exist or are actively being developed, and provide some
+              examples. These range from narrow building blocks we refer to as
+              &ldquo;primitives&rdquo; that implement specific functions,
+              protocols that describe how agents communicate, platforms and
+              products for managing agents, to standards work that aims at
+              something more comprehensive.
             </p>
 
             <p>
               As we have seen in the previous section, a robust agent ID
               solution would include authorization, authentication, identifiers,
               and other functions. Mature protocols and implementations already
-              exist for many of these.{" "}
+              exist for many of these functions.{" "}
               <Ext href="https://oauth.net/2/">OAuth</Ext> is a standard that
               allows a user to authorize an application or a website to access
               certain resources.{" "}
@@ -326,7 +353,8 @@ export default function AgentIdIngredientsPage() {
                 Model Context Protocol (MCP)
               </Ext>{" "}
               is an open-source standard for connecting AI applications to
-              external systems.{" "}
+              external systems.
+              <FnRef n={3} />{" "}
               <Ext href="https://a2a-protocol.org/">Agent2Agent (A2A)</Ext> is
               an open protocol which provides a standard way for agents to
               collaborate with each other, regardless of the underlying
@@ -403,32 +431,34 @@ export default function AgentIdIngredientsPage() {
                 Agent Communication Protocols
               </Ext>
               . Individuals also publicly submit proposed protocols as drafts to
-              the IETF, for example &ldquo;AI Agent Authentication and
-              Authorization&rdquo; (
+              the IETF, for example{" "}
               <Ext href="https://datatracker.ietf.org/doc/draft-klrc-aiagent-auth/">
-                Kasselman et al., 2026
-              </Ext>
-              ) among many others on various topics related to agent AI
-              protocols (
+                AI Agent Authentication and Authorization
+              </Ext>{" "}
+              among{" "}
               <Ext href="https://github.com/nomoticai/ietf-agent-landscape/blob/main/agent-standards-landscape.md">
-                Hood, 2026
-              </Ext>
-              ). The ITU also has a{" "}
+                many others
+              </Ext>{" "}
+              on various topics related to agent AI protocols. The ITU also has
+              a{" "}
               <Ext href="https://www.itu.int/en/ITU-T/focusgroups/tida/Pages/default.aspx">
                 Focus Group on Trust and Identity for Humans and Agentic AI
                 (FG-TIDA)
               </Ext>{" "}
               which aims to address digital identity infrastructure for humans
               and for agentic AI. NIST National Cybersecurity Center of
-              Excellence (NCCoE) also published a concept paper,
-              &ldquo;Accelerating the Adoption of Software and Artificial
-              Intelligence Agent Identity and Authorization&rdquo; to propose a
-              project to demonstrate how identity standards and best practices
-              can be applied to agentic AI applications (
+              Excellence (NCCoE) also published a concept paper,{" "}
               <Ext href="https://csrc.nist.gov/pubs/other/2026/02/05/accelerating-the-adoption-of-software-and-ai-agent/ipd">
-                Booth et al., 2026
+                Accelerating the Adoption of Software and Artificial
+                Intelligence Agent Identity and Authorization
               </Ext>
-              ).
+              , to propose a project to demonstrate how identity standards and
+              best practices can be applied to agentic AI applications and have
+              started a{" "}
+              <Ext href="https://www.nist.gov/blogs/cybersecurity-insights/back-future-why-agentic-ai-needs-strong-identity-foundation">
+                series of blog posts
+              </Ext>{" "}
+              with some of their findings.
             </p>
           </section>
 
@@ -441,15 +471,17 @@ export default function AgentIdIngredientsPage() {
             <p>
               Agent IDs aim to serve a wide range of purposes, from enabling
               basic functionality to safeguarding against harm to the broader
-              ecosystem.
+              ecosystem. In this post, we described the goals of agent IDs and
+              the functions required to fulfill them, and gave a few examples of
+              existing and ongoing work related to agent IDs.
             </p>
 
             <p>
-              SASH will next develop a refined methodology and use it to compare
-              existing agent identity proposals against these goals in order to
-              identify opportunities to improve them. If you&rsquo;d like to
-              contribute to this work or the methodology behind it, please reach
-              out at{" "}
+              Next, we will develop a refined methodology and use it to compare
+              existing agent ID proposals and implementations in order to
+              identify areas of alignment and divergence across this fast-moving
+              space. If you&rsquo;d like to contribute to this work or the
+              methodology behind it, please reach out at{" "}
               <a href="mailto:agentids@aisafety.sg" className="memo-link">
                 agentids@aisafety.sg
               </a>
@@ -468,6 +500,11 @@ export default function AgentIdIngredientsPage() {
             </h3>
 
             <figure className="memo-table">
+              <figcaption className="memo-table__caption">
+                <strong>Table 2:</strong> Functions required to fulfill the
+                different goals of agent IDs together with implementation
+                examples.
+              </figcaption>
               <div className="memo-table__scroll">
                 <table>
                   <thead>
@@ -476,8 +513,8 @@ export default function AgentIdIngredientsPage() {
                         Function
                       </th>
                       <th scope="col">Description</th>
-                      <th scope="col" className="w-[28%]">
-                        Components
+                      <th scope="col" className="w-[30%]">
+                        Implementation examples
                       </th>
                     </tr>
                   </thead>
@@ -485,35 +522,35 @@ export default function AgentIdIngredientsPage() {
                     <tr>
                       <th scope="row">Identification</th>
                       <td>
-                        Give every agent a unique, stable, resolvable name so
-                        there is a subject to authenticate, authorize, log, and
-                        hold accountable.
+                        Give every agent a unique, stable, and resolvable
+                        identifier.
                       </td>
                       <td>
                         <p>SPIFFE workload identifiers</p>
                         <p>Decentralized Identifiers (DIDs)</p>
-                        <p>agent:// URIs</p>
                       </td>
                     </tr>
                     <tr>
                       <th scope="row">Credentialing</th>
                       <td>
-                        Bind the name to a provable key via a cryptographic
-                        credential so it cannot be spoofed.
+                        Bind the identifier to a verifiable key via a
+                        cryptographic credential so it cannot be spoofed.
                       </td>
                       <td>
                         <p>Verifiable Credentials</p>
-                        <p>X.509 certificates / SVIDs</p>
+                        <p>X.509 certificates</p>
+                        <p>SVIDs</p>
                       </td>
                     </tr>
                     <tr>
                       <th scope="row">Attestation &amp; Provenance</th>
                       <td>
                         Provide independent evidence of what sits behind the
-                        name, model, training provenance, code, and runtime.
+                        name, e.g., model, training provenance, code, and
+                        runtime.
                       </td>
                       <td>
-                        <p>Attestations (RATS / TEE evidence)</p>
+                        <p>RATS / TEE evidence</p>
                         <p>Chained manifests (cf. C2PA)</p>
                         <p>SBOM-style provenance records</p>
                       </td>
@@ -521,26 +558,28 @@ export default function AgentIdIngredientsPage() {
                     <tr>
                       <th scope="row">Provisioning &amp; Lifecycle</th>
                       <td>
-                        Issue credentials at runtime, auto-rotate short-lived
-                        ones, and revoke on compromise.
+                        Issue credentials at runtime, rotate short-lived ones,
+                        and revoke on compromise.
                       </td>
                       <td>
                         <p>Credential revocation (CRL / status list)</p>
-                        <p>Short-lived credential expiry</p>
-                        <p>Token-gated shutdown endpoint</p>
+                        <p>OAuth 2.0 Token Revocation (RFC 7009)</p>
+                        <p>SCIM (RFC 7644)</p>
                       </td>
                     </tr>
                     <tr>
                       <th scope="row">Authentication</th>
                       <td>
-                        Prove control of the credential live, at connection or
-                        per request.
+                        Verify that a presented credential is valid and
+                        unrevoked, and that the presenter controls the key it
+                        binds.
                       </td>
                       <td>
                         <p>mTLS</p>
                         <p>Proof-of-possession tokens</p>
                         <p>OpenID Connect</p>
                         <p>X.509 client certificates</p>
+                        <p>HTTP Message Signatures (RFC 9421)</p>
                       </td>
                     </tr>
                     <tr>
@@ -548,41 +587,27 @@ export default function AgentIdIngredientsPage() {
                       <td>
                         Decide and enforce what an authenticated agent may do,
                         granting scoped, least-privilege permissions; require
-                        verifiable human approval for sensitive actions; and
-                        re-check individual irreversible actions against their
-                        specific context (amount, recipient, time, risk)
+                        verifiable human approval for sensitive actions.
                       </td>
                       <td>
                         <p>OAuth 2.0</p>
-                        <p>Scoped / time-bound permissions</p>
-                        <p>Capability-based tokens (Macaroons)</p>
                         <p>CIBA (out-of-band approval)</p>
-                        <p>Signed consent / mandates</p>
                         <p>Rich Authorization Requests (RAR)</p>
                         <p>Transaction-bound tokens</p>
+                        <p>Policy engines (OPA / Cedar)</p>
                       </td>
                     </tr>
                     <tr>
                       <th scope="row">Delegation</th>
-                      {/*
-                        TODO(SASH): the source cell ends with an internal
-                        note that reads as an unresolved editorial comment,
-                        so it is not rendered here. Verbatim, it was:
-                        "[we don't cover the case where an agent 'delegates'
-                        a task to another external agent/work/service/whatever
-                        that has more authority - we don't cover the confused
-                        deputy problem]". Publish a cleaned-up scope caveat if
-                        it was meant for readers.
-                      */}
                       <td>
-                        Represent and verify the authority chain human →
-                        agent → sub-agent, narrowing at each hop and always
-                        traceable.
+                        Represent and verify the authority chain from the
+                        principal to the agent, and from the agent to other
+                        agents or sub-agents, narrowing at each hop.
                       </td>
                       <td>
-                        <p>OAuth token exchange</p>
-                        <p>Delegation / attenuated tokens</p>
+                        <p>OAuth Token Exchange (RFC 8693)</p>
                         <p>Biscuits and Macaroons</p>
+                        <p>UCANs</p>
                       </td>
                     </tr>
                     <tr>
@@ -592,27 +617,76 @@ export default function AgentIdIngredientsPage() {
                         who did what under whose authority.
                       </td>
                       <td>
-                        <p>Tamper-evident audit logs</p>
-                        <p>Signed invocation / execution proofs</p>
-                        <p>Merkle-checkpointed ledgers</p>
+                        <p>OpenTelemetry</p>
+                        <p>
+                          Signed invocation / execution proofs (e.g., KYA-OS
+                          proof)
+                        </p>
+                        <p>Certificate Transparency (RFC 9162)</p>
+                        <p>Time-Stamp Protocol (RFC 3161)</p>
                       </td>
                     </tr>
                     <tr>
-                      <th scope="row">Continuous Trust &amp; Remediation</th>
+                      <th scope="row">Continuous Monitoring</th>
                       <td>
-                        Continuously check that behavior still matches identity,
-                        and revoke or attenuate access in real time.
+                        Continuously check that behavior still matches identity
+                        to allow revoking or attenuating access in real time.
                       </td>
                       <td>
-                        <p>OpenID Shared Signals / CAEP / RISC</p>
-                        <p>OAuth 2.0 Token Revocation (RFC 7009)</p>
-                        <p>Microsoft CAE</p>
+                        <p>Falco (CNCF)</p>
+                        <p>OpenID Shared Signals (CAEP, RISC)</p>
                       </td>
                     </tr>
                   </tbody>
                 </table>
               </div>
             </figure>
+
+            <p>
+              Additionally, there are other functions that are valuable for AI
+              agents and may be supported by agent IDs, even though they may not
+              contribute directly to the goals of agent IDs. For example, agent
+              discovery allows for agents, their capabilities, and other
+              relevant information to be discovered without having prior
+              interaction. Agents can also be scored for their
+              &lsquo;trustworthiness&rsquo; by third parties according to
+              various criteria, where only agents of a certain reputation would
+              be allowed access. Furthermore, a registry can be used to store
+              information related to the agent, including their IDs, their
+              capabilities, and other details on the actors behind the agent.
+            </p>
+          </section>
+
+          {/* ── Notes ─────────────────────────────────────────────────── */}
+          <section aria-labelledby="notes" className="memo-section">
+            <h2 id="notes" className="memo-h2">
+              Notes
+            </h2>
+
+            <ol className="memo-list memo-list--ordered text-[14px]">
+              <FootnoteItem n={1}>
+                Unfortunately, this particular OpenAI / Hugging Face incident
+                cannot be prevented by agent IDs alone, as the attack was
+                conducted through several intermediaries where the ID would not
+                have been carried through. We describe these learnings in more
+                detail in an upcoming post.
+              </FootnoteItem>
+              <FootnoteItem n={2}>
+                There are also additional actors who may be involved in the
+                process and may also play a role in agent IDs, such as agent
+                platform and gateway providers. On the other hand, there are
+                often implementations where these roles are performed by the
+                same actor, such as when an agent and the model used are
+                open-source versions hosted locally.
+              </FootnoteItem>
+              <FootnoteItem n={3}>
+                Additionally, MCP provides{" "}
+                <Ext href="https://modelcontextprotocol.io/specification/2026-07-28/basic/authorization">
+                  authorization
+                </Ext>{" "}
+                capabilities at the transport level.
+              </FootnoteItem>
+            </ol>
           </section>
 
           {/* ── Foot of article ───────────────────────────────────────── */}
