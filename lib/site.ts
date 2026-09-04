@@ -254,6 +254,16 @@ export const siteConfig = {
         status: "published",
       },
       {
+        id: "key-ingredients-of-agent-ids",
+        date: "Sep 2026",
+        kind: "Research note",
+        title: "Key Ingredients of Robust AI Agent IDs",
+        summary:
+          "A memo laying out the goals of agent IDs and the functions necessary to fulfill them, as well as examples of existing components, protocols, and implementations",
+        href: "/key-ingredients",
+        status: "published",
+      },
+      {
         id: "emergency-shutdowns",
         date: "Coming soon",
         kind: "Policy memo",
