@@ -668,8 +668,12 @@ export default function AgentIdIngredientsPage() {
                 Unfortunately, this particular OpenAI / Hugging Face incident
                 cannot be prevented by agent IDs alone, as the attack was
                 conducted through several intermediaries where the ID would not
-                have been carried through. We describe these learnings in more
-                detail in an upcoming post.
+                have been carried throug  h. We describe these learnings in more
+                detail in{" "}
+                <Link href="/openai-hugging-face-incident" className="memo-link">
+                  a companion post
+                </Link>
+                .
               </FootnoteItem>
               <FootnoteItem n={2}>
                 There are also additional actors who may be involved in the

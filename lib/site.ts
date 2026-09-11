@@ -264,6 +264,16 @@ export const siteConfig = {
         status: "published",
       },
       {
+        id: "agent-ids-hacking-incident",
+        date: "Sep 2026",
+        kind: "Research note",
+        title: "Agent Identity and the OpenAI / Hugging Face Hacking Incident",
+        summary:
+          "An analysis of the hacking incident and what it tells us about agent IDs",
+        href: "/openai-hugging-face-incident",
+        status: "published",
+      },
+      {
         id: "emergency-shutdowns",
         date: "Coming soon",
         kind: "Policy memo",
