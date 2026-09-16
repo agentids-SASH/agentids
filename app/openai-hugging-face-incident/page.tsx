@@ -27,10 +27,10 @@ export const metadata: Metadata = {
  *  - The footer links back to the "Key Ingredients of AI Agent IDs" note,
  *    whose footnote 1 promises this post. Confirm that route.
  */
-const PUBLISHED = { iso: "2026-09-11", label: "11 September 2026" };
+const PUBLISHED = { iso: "2026-09-11", label: "16 September 2026" };
 
 const AUTHORS =
-  "Sam Boger (SASH), Ze Shen Chin (SASH), and Ian Eisenberg (Credo AI)";
+  "Sam Boger (SASH), Ze Shen Chin (SASH)";
 
 /**
  * "Notes" is deliberately absent from the rail, matching the ingredients
@@ -185,7 +185,7 @@ export default function AgentIdentityIncidentPage() {
             </h2>
 
             <p>
-              We refer to <em>Agent IDs</em> as the information that an AI agent may
+              We refer to <em>Agent IDs </em>as the information that an AI agent may
               present to external systems to gain access to those systems&rsquo;
               resources. Agent IDs can include a simple identifier assigned to
               an individual AI agent as well as a more comprehensive collection
@@ -387,7 +387,7 @@ export default function AgentIdentityIncidentPage() {
           <section aria-label="Acknowledgements" className="memo-section">
             <p className="text-slate-600">
               <em>
-                We thank Lewis Hammond, Dave Kasten, Matthew Mittelsteadt, Dazza
+                We thank Ian Eisenberg, Lewis Hammond, Dave Kasten, Matthew Mittelsteadt, Dazza
                 Greenwood, and Leon Staufer for providing feedback on earlier
                 drafts. All mistakes are ours.
               </em>
